@@ -13,6 +13,9 @@
             <h1 class="display-4">Welcome to Dolphin Academy!</h1>
             <h2>Home of Learners</h2>
         </header>
+        <section>
+            Check out our available courses<a href=#> here!</a>
+        </section>
     </body>
     <footer>
         
