@@ -6,15 +6,13 @@
         ?>
     </head>
     <body>
-        <?php
-            include "nav.inc.php";
-        ?>
         <header class="jumbotron text-center">
-            <h1 class="display-4">Welcome to Dolphin Academy!</h1>
-            <h2>Home of Learners</h2>
+            <h1 class="display-4">About Us</h1>
+            <p>test</p>
         </header>
     </body>
     <footer>
         
     </footer>
 </html>
+
