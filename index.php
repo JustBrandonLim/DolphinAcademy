@@ -6,11 +6,12 @@
         ?>
     </head>
     <body>
-        <h1>Normal HTML Content...</h1>
-        <?php
-            echo "<h3>Content inside PHP code...</h3>";
-            echo "<hr />";
-            echo phpinfo();
-        ?>
+        <header class="jumbotron text-center">
+            <h1 class="display-4">Welcome to World of Pets!</h1>
+            <h2>Home of Singapore's Pet Lovers</h2>
+        </header>
     </body>
+    <footer>
+        
+    </footer>
 </html>
