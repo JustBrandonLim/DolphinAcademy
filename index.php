@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
-        <title>Dolphin Academy</title>
+        <?php
+            include "includes.inc.php";
+        ?>
     </head>
     <body>
         <h1>Normal HTML Content...</h1>
