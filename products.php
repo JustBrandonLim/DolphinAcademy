@@ -1,15 +1,20 @@
-<?php
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/PHPClass.php to edit this template
- */
-
-/**
- * Description of products
- *
- * @author brand
- */
-class products {
-    //put your code here
-}
+<!DOCTYPE html>
+<html>
+    <head>
+        <?php
+            include "includes.inc.php";
+        ?>
+    </head>
+    <body>
+        <?php
+            include "nav.inc.php";
+        ?>
+        <header class="jumbotron text-center">
+            <h1 class="display-4">Products</h1>
+            <h2>Home of Learners</h2>
+        </header>
+    </body>
+    <footer>
+        
+    </footer>
+</html>

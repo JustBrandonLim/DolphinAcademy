@@ -6,9 +6,12 @@
         ?>
     </head>
     <body>
+        <?php
+            include "nav.inc.php";
+        ?>
         <header class="jumbotron text-center">
             <h1 class="display-4">About Us</h1>
-            <p>test</p>
+            <h2>Home of Learners</h2>
         </header>
     </body>
     <footer>
