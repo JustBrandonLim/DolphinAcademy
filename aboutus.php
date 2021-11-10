@@ -14,8 +14,7 @@
             <h2>Home of Learners</h2>
         </header>
     </body>
-    <footer>
-        
-    </footer>
+<?php
+include "footer.inc.php"; ?>
 </html>
 
