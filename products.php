@@ -14,13 +14,21 @@
             <?php
                 $errorMsg = "";
                 $success = true;
+                
+                getProducts();
+                
+                if (!$success)
+                {
+                    echo $errorMsg;
+                }
             
                 function getProducts()
                 {
                     global $errorMsg;
                     
                     // Create database connection.
-                    $config = parse_ini_file('../../private/db-config.ini');
+                    $config = parse_ini_file('./db-config.ini');
+                    //$config = parse_ini_file('../../private/db-config.ini');
                     $conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
                     
                     // Check connection
