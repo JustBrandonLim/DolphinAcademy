@@ -51,6 +51,7 @@
                                     echo "<div class=\"card-body\">";
                                     echo "<h5 class=\"card-title\">" . $row["name"] . "</h5>";
                                     echo "<p class=\"card-text\">" . $row["description"] . "</p>";
+                                    echo "<a href=\"#\" class=\"btn btn-primary\">Add To Cart</a>";
                                     echo "</div>";
                                     echo "</div>";
                                     echo "</div>";

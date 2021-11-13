@@ -79,7 +79,6 @@ p span{
         <div class="container">
             <section class="zero">
                 <a href="aboutus.php"><span>Dolphin Academy</span></a>
-                
             </section>
             <section class="one">
                 <a href="#"><span>COOKING</span></a>
