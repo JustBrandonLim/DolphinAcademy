@@ -8,10 +8,22 @@ and open the template in the editor.
     Author     : Admin
 */
 
+header h1 {
+    text-align: center;
+}
+
+header p {
+    text-align: center;
+}
+
 .card {
     width: 18rem;
 }
 
 .form-group {
+    margin: 0.625rem;
+}
+
+.form-check {
     margin: 0.625rem;
 }

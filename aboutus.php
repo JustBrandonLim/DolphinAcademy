@@ -9,12 +9,16 @@
         <?php
             include "nav.inc.php";
         ?>
-        <header class="jumbotron text-center">
-            <h1 class="display-4">About Us</h1>
-            <h2>Home of Learners</h2>
+        <header>
+            <h1>About Us</h1>
+            <p>Home of the Learners</p>
         </header>
+        <main class="container-fluid">
+            
+        </main>
+        <?php
+            include "footer.inc.php"; 
+        ?>
     </body>
-<?php
-include "footer.inc.php"; ?>
 </html>
 
