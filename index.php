@@ -18,27 +18,14 @@ section{
     background-size: cover ;   
 }
 .one{
-    background-image: url("/images/cooking1.jpg");
-    height: 100vh;
-    backgroud-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;   
-}
-.two{
-    background-image: url("/images/knitting1.jpg");
-    height: 100vh;
-    backgroud-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;   
-}
-.three{
     background-image: url("/images/writing1.jpg");
     height: 100vh;
     backgroud-position: center;
     background-repeat: no-repeat;
-    background-size: cover;   
+    background-size: cover;  
+    
 }
-.four{
+.two{
     background-image: url("/images/programming1.jpg");
     height: 100vh;
     backgroud-position: center;
@@ -49,7 +36,8 @@ section{
 .container a{
     text-decoration: none;
     color: black;
-    font-size: 100px;
+    font-size: 80px;
+    margin-left: 16px; 
 }
 a span{
     background-color: white;
@@ -81,16 +69,10 @@ p span{
                 <a href="aboutus.php"><span>Dolphin Academy</span></a>
             </section>
             <section class="one">
-                <a href="#"><span>COOKING</span></a>
+                <a href="products.php"><span>"Learn continually - there's always "one more thing" to learn" - Steve Jobs </span></a>
             </section>
             <section class="two">
-                <a href="#"><span>KNITTING</span></a>
-            </section>
-            <section class="three">
-                <a href="#"><span>CREATIVE WRITING</span></a>
-            </section>
-            <section class="four">
-                <a href="#"><span>CODING</span></a>
+                <a href="products.php"><span>Maximise learning opportunities with us!</span></a>
             </section>
         </div>
     </body>

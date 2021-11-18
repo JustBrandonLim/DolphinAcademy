@@ -121,7 +121,7 @@ if ($count === 5)
     echo "<h1>Your Registration is successful!</h1>";
     echo "<h3>Thank your signing up, ". $fname," ", $lname .".</h3>";
     echo "<form action='index.php'><button id='successful' class='btn btn-success' type='submit' >Home</button></form>";
-    //saveMemberToDB();
+    saveMemberToDB();
 }    
 else
 {   
@@ -143,7 +143,7 @@ include "footer.inc.php"; ?>
  <?php 
 
 /* Helper function to write the member data to the DB */
-/* 
+ 
 function saveMemberToDB() 
 {
     global $fname, $lname, $email, $pwd_hashed, $errorMsg, $success; 
@@ -175,4 +175,4 @@ function saveMemberToDB()
 $conn->close(); 
 }
 ?>
- */
+
