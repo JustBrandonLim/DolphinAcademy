@@ -20,7 +20,7 @@
 
         try
         {
-            $statement = $connectionGet->prepare("INSERT INTO world_of_pets_members (fname, lname, email, password) VALUES (?, ?, ?, ?)");
+            $statement = $connectionGet->prepare("INSERT INTO dolphin_academy_users (fname, lname, email, password) VALUES (?, ?, ?, ?)");
             $statement->bind_param("ssss", $fname, $lname, $email, $pwd_hashed);
             if (!$statement->execute())
             {
@@ -103,11 +103,11 @@
             {
                 while($row = $result->fetch_assoc()) 
                 {
-                    echo "<div class=\"col-6\" style=\"padding-bottom:10px;\">";
+                    echo "<div style=\"padding-bottom:10px;\">";
                     echo "<div class=\"card\" style=\"width: 18rem;\">";
                     echo "<div class=\"card-body\">";
                     echo "<p class=\"card-text\">" . $row["content"] . "</p>";
-                    echo "<h6 class=\"card-subtitle mb-2 text-muted\"> - " . $row["username"] . "</h6>";
+                    echo "<h6 class=\"card-subtitle mb-2 text-muted\"> - " . $row["fname"] . " " . $row["lname"] . "</h6>";
                     echo "</div>";
                     echo "</div>";
                     echo "</div>";
