@@ -18,7 +18,12 @@
                 <?php
                     include "php/DatabaseFunctions.php";
                     
-                    getProducts();                    
+                    $errorMessage = populateCourses();
+                    
+                    if (!empty($errorMessage))
+                    {
+                        echo "<script>alert(\"" . $errorMessage . "\");</script>";
+                    }
                 ?>
             </div>
         </main>

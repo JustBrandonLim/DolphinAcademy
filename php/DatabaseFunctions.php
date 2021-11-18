@@ -10,49 +10,45 @@
         return $data;
     } 
     
+    //Register
     function registerMember($fname, $lname, $email, $pwd_hashed)
     {
         $errorMessage = "";
         
         $connection = DatabaseConnection::getInstance();
-
         $connectionGet = $connection->getConnection();
 
-        // Check connection
-        if ($connectionGet->connect_error) 
+        try
         {
-            $errorMessage = "An error has occured. Please try again."; 
-        } 
-        else 
-        {
-            $stmt = $connectionGet->prepare("INSERT INTO world_of_pets_members (fname, lname, email, password) VALUES (?, ?, ?, ?)");
-            $stmt->bind_param("ssss", $fname, $lname, $email, $pwd_hashed); if (!$stmt->execute())
-            if (!$stmt->execute())
+            $statement = $connectionGet->prepare("INSERT INTO world_of_pets_members (fname, lname, email, password) VALUES (?, ?, ?, ?)");
+            $statement->bind_param("ssss", $fname, $lname, $email, $pwd_hashed);
+            if (!$statement->execute())
             {
                 $errorMessage = "An error has occured. Please try again.";
             }
-            $stmt->close(); 
+            $statement->close(); 
+        } 
+        catch (Exception $e)
+        {
+            $errorMessage = "An error has occured. Please try again."; 
         }
         
         return $errorMessage;
     }
     
-    function getProducts()
+    //Login
+    
+    //Courses
+    function populateCourses()
     {
-        $success = false;
-
+        $errorMessage = "";
+        
         $connection = DatabaseConnection::getInstance();
-
         $connectionGet = $connection->getConnection();
 
-        if ($connectionGet->connect_error)
+        try
         {
-            echo "Connection failed! Error: " . $connectionGet->connect_error;
-        }
-        else
-        {
-            // Prepare the statement:
-            $statement = $connectionGet->prepare("SELECT * FROM dolphin_academy_products");
+            $statement = $connectionGet->prepare("SELECT * FROM dolphin_academy_courses");
             $statement->execute();
             $result = $statement->get_result();
             if ($result->num_rows > 0)
@@ -60,7 +56,7 @@
                 while($row = $result->fetch_assoc()) 
                 {
                     echo "<div class=\"col\">";
-                    echo "<div class=\"card\" style=\"width: 18rem;\">";
+                    echo "<div class=\"card small-card\">";
                     echo "<div class=\"card-body\">";
                     echo "<h5 class=\"card-title\">" . $row["name"] . "</h5>";
                     echo "<p class=\"card-text\">" . $row["description"] . "</p>";
@@ -69,25 +65,28 @@
                     echo "</div>";
                     echo "</div>";
                 }
-
-                $success = true;
             }
             else
             {
-                echo "Products not available!";
+                $errorMessage = "No courses available.";
             }
-            $statement->close();
+            $statement->close(); 
+        } 
+        catch (Exception $e)
+        {
+            $errorMessage = "An error has occured. Please try again.";
+            return $errorMessage;
         }
-
-        return $success;
+        
+        return $errorMessage;
     }
 
+    //Reviews
     function getTestimonials()
     {
         $success = false;
 
         $connection = DatabaseConnection::getInstance();
-
         $connectionGet = $connection->getConnection();
 
         if ($connectionGet->connect_error)
@@ -124,5 +123,65 @@
         }
 
         return $success;
+    }
+    
+    //Admin
+    function populateCoursesDropDown()
+    {
+        $selected = false;
+        
+        $errorMessage = "";
+        
+        $connection = DatabaseConnection::getInstance();
+        $connectionGet = $connection->getConnection();
+
+        try
+        {
+            $statement = $connectionGet->prepare("SELECT * FROM dolphin_academy_courses");
+            $statement->execute();
+            $result = $statement->get_result();
+            if ($result->num_rows > 0)
+            {
+                while($row = $result->fetch_assoc()) 
+                {
+                    if (!$selected)
+                    {
+                        echo "<option selected value=\"" . $row["name"] . "\">" . $row["name"] . "</option>";
+                        $selected = true;
+                    }
+                    else
+                    {
+                        echo "<option value=\"" . $row["name"] . "\">" . $row["name"] . "</option>";
+                    }
+                }
+            }
+            else
+            {
+                $errorMessage = "No courses available.";
+            }
+            $statement->close(); 
+        } 
+        catch (Exception $e)
+        {
+            $errorMessage = "An error has occured. Please try again.";
+            return $errorMessage;
+        }
+        
+        return $errorMessage;
+    }
+    
+    function addCourse()
+    {
+        
+    }
+    
+    function deleteCourse()
+    {
+        
+    }
+    
+    function updateCourse()
+    {
+        
     }
 ?>

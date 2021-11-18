@@ -92,7 +92,7 @@
                 <div class="col-auto">
                     <div class="card large-card">
                         <div class="card-body">
-                            <form action="register.php" method="post"> 
+                            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post"> 
                                 <div class="form-group">
                                     <label for="fname">First Name:</label>
                                     <input class="form-control" type="text" id="fname" maxlength="45" name="fname" 

@@ -10,31 +10,35 @@
             include "nav.inc.php";
         ?>
         <main class="container-fluid">
+            <?php
+                include "php/DatabaseFunctions.php";
+                
+            ?>
             <header>
                 <h1>Admin</h1>
-                <p>This admin dashboard allows you to add and delete products from the Dolphin Academy system.</p>
+                <p>This admin dashboard allows you to add and delete courses from the Dolphin Academy system.</p>
             </header>
             <div class="row">
                 <div class="col-auto">
                     <div class="card small-card">
                         <div class="card-body">
-                            <h5 class="card-title">Add Product</h5>
-                            <p class="card-text">This function allows you to add products.</p>
-                            <form action="process_register.php" method="post"> 
+                            <h5 class="card-title">Add Course</h5>
+                            <p class="card-text">This function allows you to add courses.</p>
+                            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post"> 
                                 <div class="form-group">
-                                    <label for="pname">Product Name:</label>
-                                    <input class="form-control" type="text" id="pname" maxlength="45" name="pname" 
+                                    <label for="cname">Product Name:</label>
+                                    <input class="form-control" type="text" id="pname" maxlength="45" name="cname" 
                                             placeholder="Enter product name">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="pdesc">Product Description:</label>
-                                    <textarea class="form-control" id="pdesc" maxlength="255" name="pdesc" 
+                                    <label for="cdesc">Product Description:</label>
+                                    <textarea class="form-control" id="pdesc" maxlength="255" name="cdesc" 
                                             placeholder="Enter product description"></textarea>
                                 </div>
                                 
                                 <div class="form-group">
-                                    <button class="btn btn-primary" type="submit">Add Product</button>
+                                    <button class="btn btn-primary" type="submit">Add course</button>
                                 </div>
                             </form>
                         </div>
@@ -43,21 +47,25 @@
                 <div class="col-auto">
                     <div class="card small-card">
                         <div class="card-body">
-                            <h5 class="card-title">Delete Product</h5>
-                            <p class="card-text">This function allows you to delete products.</p>
-                            <form action="process_register.php" method="post">  
+                            <h5 class="card-title">Delete Course</h5>
+                            <p class="card-text">This function allows you to delete course.</p>
+                            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">  
                                 <div class="form-group">
-                                    <label for="pname">Product Name:</label>
-                                    <select class="form-select" id="pname" name="pname" aria-label="Products">
-                                        <option selected>Test Product 1</option>
-                                        <option value="1">Test Product 1</option>
-                                        <option value="2">Test Product 1</option>
-                                        <option value="3">Test Product 1</option>
+                                    <label for="cname">Product Name:</label>
+                                    <select class="form-select" id="pname" name="cname" aria-label="Products">
+                                        <?php 
+                                            $errorMessage = populateCoursesDropDown();
+                                            
+                                            if (!empty($errorMessage))
+                                            {
+                                                echo "<script>alert(\"" . $errorMessage . "\");</script>";
+                                            }
+                                        ?>
                                     </select>
                                 </div>
                                 
                                 <div class="form-group">
-                                    <button class="btn btn-primary" type="submit">Delete Product</button>
+                                    <button class="btn btn-primary" type="submit">Delete Course</button>
                                 </div>
                             </form>
                         </div>
@@ -66,32 +74,31 @@
                 <div class="col-auto">
                     <div class="card small-card">
                         <div class="card-body">
-                            <h5 class="card-title">Update Product</h5>
-                            <p class="card-text">This function allows you to update products.</p>
-                            <form action="process_register.php" method="post">  
+                            <h5 class="card-title">Update Course</h5>
+                            <p class="card-text">This function allows you to update courses.</p>
+                            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">  
                                 <div class="form-group">
                                     <label for="pname">Product Name:</label>
                                     <select class="form-select" id="pname" name="pname" aria-label="Products">
-                                        <option selected>Test Product 1</option>
-                                        <option value="1">Test Product 1</option>
-                                        <option value="2">Test Product 1</option>
-                                        <option value="3">Test Product 1</option>
+                                        <?php 
+                                            $errorMessage = populateCoursesDropDown();
+                                        ?>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="pname">Product Name:</label>
-                                    <input class="form-control" type="text" id="pname" maxlength="45" name="pname" 
-                                            placeholder="Enter product name">
+                                    <label for="cname">Product Name:</label>
+                                    <input class="form-control" type="text" id="pname" maxlength="45" name="cname" 
+                                            placeholder="Enter course name">
                                 </div>
 
                                 <div class="form-group">
-                                        <label for="pdesc">Product Description:</label>
-                                        <textarea class="form-control" id="pdesc" maxlength="255" name="pdesc" 
-                                                placeholder="Enter product description"></textarea>
+                                        <label for="cdesc">Product Description:</label>
+                                        <textarea class="form-control" id="pdesc" maxlength="255" name="cdesc" 
+                                                placeholder="Enter course description"></textarea>
                                 </div>
                                 
                                 <div class="form-group">
-                                    <button class="btn btn-primary" type="submit">Delete Product</button>
+                                    <button class="btn btn-primary" type="submit">Update Course</button>
                                 </div>
                             </form>
                         </div>

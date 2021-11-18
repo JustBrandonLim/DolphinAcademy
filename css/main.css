@@ -7,11 +7,11 @@ and open the template in the editor.
     Created on : 10 Nov 2021, 4:56:48 pm
     Author     : Admin
 */
-h1 {
+header h1 {
     text-align: center;
 }
 
-p {
+header p {
     text-align: center;
 }
 
