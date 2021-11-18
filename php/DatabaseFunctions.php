@@ -78,4 +78,48 @@ function saveMemberToDB()
     }
 $connectionGet->close(); 
 }
+
+function getTestimonials()
+{
+    $success = false;
+    
+    $connection = DatabaseConnection::getInstance();
+    
+    $connectionGet = $connection->getConnection();
+    
+    if ($connectionGet->connect_error)
+    {
+        echo "Connection failed! Error: " . $connectionGet->connect_error;
+    }
+    else
+    {
+        // Prepare the statement:
+        $statement = $connectionGet->prepare("SELECT * FROM dolphin_academy_testimonial INNER JOIN dolphin_academy_users ON dolphin_academy_testimonial.fuser = dolphin_academy_users.id");
+        $statement->execute();
+        $result = $statement->get_result();
+        if ($result->num_rows > 0)
+        {
+            while($row = $result->fetch_assoc()) 
+            {
+                echo "<div class=\"col\">";
+                echo "<div class=\"card\" style=\"width: 18rem;\">";
+                echo "<div class=\"card-body\">";
+                echo "<p class=\"card-text\">" . $row["content"] . "</p>";
+                echo "<h6 class=\"card-subtitle mb-2 text-muted\"> - " . $row["username"] . "</h6>";
+                echo "</div>";
+                echo "</div>";
+                echo "</div>";
+            }
+            
+            $success = true;
+        }
+        else
+        {
+            echo "No testimonials found.";
+        }
+        $statement->close();
+    }
+    
+    return $success;
+}
 ?>
