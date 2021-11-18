@@ -25,6 +25,7 @@
                 <textarea placeholder="Your thoughts go here!" class="form-control" rows="8" cols="100"></textarea>
                 <button type="submit" class="btn btn-primary mb-2">Submit</button>
             </form>
+            <!-->
         </main>
         <?php
             include "footer.inc.php"; 
