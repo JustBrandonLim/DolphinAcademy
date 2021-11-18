@@ -9,8 +9,6 @@
 }
 </style>
 
-
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid p-0">
         <!--
@@ -36,6 +34,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="./reviews.php">Reviews</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./testimonial.php">Testimonials</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="./aboutus.php">About Us</a>
