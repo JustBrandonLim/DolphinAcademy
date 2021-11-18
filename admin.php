@@ -24,7 +24,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Add Course</h5>
                             <p class="card-text">This function allows you to add courses.</p>
-                            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post"> 
+                            <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post"> 
                                 <div class="form-group">
                                     <label for="cname">Product Name:</label>
                                     <input class="form-control" type="text" id="pname" maxlength="45" name="cname" 
@@ -49,7 +49,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Delete Course</h5>
                             <p class="card-text">This function allows you to delete course.</p>
-                            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">  
+                            <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">  
                                 <div class="form-group">
                                     <label for="cname">Product Name:</label>
                                     <select class="form-select" id="pname" name="cname" aria-label="Products">
@@ -76,7 +76,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Update Course</h5>
                             <p class="card-text">This function allows you to update courses.</p>
-                            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">  
+                            <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">  
                                 <div class="form-group">
                                     <label for="pname">Product Name:</label>
                                     <select class="form-select" id="pname" name="pname" aria-label="Products">

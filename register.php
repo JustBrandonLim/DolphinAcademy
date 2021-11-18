@@ -14,7 +14,7 @@
                 include "./php/DatabaseFunctions.php";
                
                 //Check if POST
-                if ($_SERVER['REQUEST_METHOD'] == 'POST')
+                if ($_SERVER["REQUEST_METHOD"] == "POST")
                 {
                     $errorMessage = $fname = $lname = $email = $pwd_hashed = "";
                     
@@ -92,7 +92,7 @@
                 <div class="col-auto">
                     <div class="card large-card">
                         <div class="card-body">
-                            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post"> 
+                            <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post"> 
                                 <div class="form-group">
                                     <label for="fname">First Name:</label>
                                     <input class="form-control" type="text" id="fname" maxlength="45" name="fname" 
