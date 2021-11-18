@@ -104,7 +104,7 @@
                 while($row = $result->fetch_assoc()) 
                 {
                     echo "<div style=\"padding-bottom:10px;\">";
-                    echo "<div class=\"card\" style=\"width: 18rem;\">";
+                    echo "<div class=\"card w-100\">";
                     echo "<div class=\"card-body\">";
                     echo "<p class=\"card-text\">" . $row["content"] . "</p>";
                     echo "<h6 class=\"card-subtitle mb-2 text-muted\"> - " . $row["fname"] . " " . $row["lname"] . "</h6>";
