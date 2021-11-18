@@ -21,13 +21,10 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="./index.php">Home
-                        <span class="visually-hidden">(current)</span>
-                    </a>
+                    <a class="nav-link" href="./index.php">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="./courses.php">Courses</a>
@@ -36,21 +33,15 @@
                     <a class="nav-link" href="./reviews.php">Reviews</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./testimonial.php">Testimonials</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./testimonial.php">Testimonials</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="./aboutus.php">About Us</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="register.php">Register</a>
+                    <a class="nav-link" href="./register.php">Register</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="login.php">Login</a>
+                    <a class="nav-link" href="./login.php">Login</a>
                 </li>
             </ul>
         </div>
