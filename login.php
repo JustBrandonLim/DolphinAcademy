@@ -1,39 +1,48 @@
-<html>
-<head>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
         <?php
             include "includes.inc.php";
         ?>
+    </head>
+    <body>
+        <?php
+            include "nav.inc.php";
+        ?>
+        <main class="container-fluid">
+            <header>
+                <h1>Login</h1> 
+                <p>For new users, please register <a href="./php/processes/process_login.php">here</a>!</p>
+            </header>
+            <div class="row justify-content-center">
+                <div class="col-auto">
+                    <div class="card small-card">
+                        <div class="card-body">
+                            <form action="./php/processes/process_registernew.php" method="post">
+                                <div class="form-group">
+                                    <label for="email">Email:</label>
+                                    <input class="form-control" id="email" 
+                                            name="email" type ="email"  placeholder="Enter email">
+                                </div>
 
-    <title>Dolphin Academy</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-    <?php
-    include "nav.inc.php";
-    ?>
-    <main class="container">
-        <h1>Member Login</h1>
-        <form action="process_login.php" method="post">
+                                <div class="form-group">
+                                    <label for="pwd">Password:</label>
+                                    <input class="form-control" type="password" id="pwd"  
+                                            name="pwd" placeholder="Enter password">
+                                </div>
 
-<div class="form-group">
-<label for="email">Email:</label>
-<input class="form-control" id="email" 
-name="email" type ="email"  placeholder="Enter email">
-</div>
-<div class="form-group">
-<label for="pwd">Password:</label>
-<input class="form-control" type="password" id="pwd"  
-name="pwd" placeholder="Enter password">
-</div>
-<div class="form-group">
-    <button class="btn btn-primary" style="margin-top: 10px" type="submit">Login</button>
-</div>
-</form>
-    </main>
-    <?php
-    include "footer.inc.php";
-    ?>
-</body>
+                                <div class="form-group">
+                                    <button class="btn btn-primary" type="submit">Login</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <?php
+            include "footer.inc.php";
+        ?>
+    </body>
 </html>
 

@@ -16,7 +16,7 @@
         <main class="container-fluid">
             <div class="row">
                 <?php
-                    require "php/DatabaseFunctions.php";
+                    include "php/DatabaseFunctions.php";
                     
                     getProducts();                    
                 ?>

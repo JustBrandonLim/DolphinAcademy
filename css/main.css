@@ -7,17 +7,22 @@ and open the template in the editor.
     Created on : 10 Nov 2021, 4:56:48 pm
     Author     : Admin
 */
-
-header h1 {
+h1 {
     text-align: center;
 }
 
-header p {
+p {
     text-align: center;
 }
 
-.card {
+.small-card {
     width: 18rem;
+    margin: 0.625rem;
+}
+
+.large-card {
+    width: 62.5rem;
+    margin: 0.625rem;
 }
 
 .form-group {

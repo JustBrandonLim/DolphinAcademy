@@ -9,12 +9,14 @@
         <?php
             include "nav.inc.php";
         ?>
-        <main class="container-fluid">  
-            <div class="row">
+        <main class="container-fluid">
+            <header>
                 <h1>Admin</h1>
                 <p>This admin dashboard allows you to add and delete products from the Dolphin Academy system.</p>
+            </header>
+            <div class="row">
                 <div class="col-auto">
-                    <div class="card">
+                    <div class="card small-card">
                         <div class="card-body">
                             <h5 class="card-title">Add Product</h5>
                             <p class="card-text">This function allows you to add products.</p>
@@ -39,7 +41,7 @@
                     </div>
                 </div>
                 <div class="col-auto">
-                    <div class="card">
+                    <div class="card small-card">
                         <div class="card-body">
                             <h5 class="card-title">Delete Product</h5>
                             <p class="card-text">This function allows you to delete products.</p>
@@ -62,7 +64,7 @@
                     </div>
                 </div>
                 <div class="col-auto">
-                    <div class="card">
+                    <div class="card small-card">
                         <div class="card-body">
                             <h5 class="card-title">Update Product</h5>
                             <p class="card-text">This function allows you to update products.</p>
