@@ -39,6 +39,9 @@
                     <a class="nav-link" href="./testimonial.php">Testimonials</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="./testimonial.php">Testimonials</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="./aboutus.php">About Us</a>
                 </li>
             </ul>
