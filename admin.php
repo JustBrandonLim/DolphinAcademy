@@ -2,16 +2,16 @@
 <html>
     <head>
         <?php
-            include "includes.inc.php";
+            include "./includes.inc.php";
         ?>
     </head>
     <body>
         <?php
-            include "nav.inc.php";
+            include "./nav.inc.php";
         ?>
         <main class="container-fluid">
             <?php
-                include "php/DatabaseFunctions.php";
+                include "./php/DatabaseFunctions.php";
                 
             ?>
             <header>
@@ -104,13 +104,10 @@
                         </div>
                     </div>
                 </div>
-                <?php
-                    require "php/DatabaseFunctions.php";
-                ?>
             </div>
         </main>
     </body>
     <?php
-        include "footer.inc.php"; 
+        include "./footer.inc.php"; 
     ?>
 </html>

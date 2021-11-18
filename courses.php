@@ -2,12 +2,12 @@
 <html lang="en">
     <head>
         <?php
-            include "includes.inc.php";
+            include "./includes.inc.php";
         ?>
     </head>
     <body>
         <?php
-            include "nav.inc.php";
+            include "./nav.inc.php";
         ?>
         <header>
             <h1>Courses</h1>
@@ -16,7 +16,7 @@
         <main class="container-fluid">
             <div class="row">
                 <?php
-                    include "php/DatabaseFunctions.php";
+                    include "./php/DatabaseFunctions.php";
                     
                     $errorMessage = populateCourses();
                     
@@ -28,7 +28,7 @@
             </div>
         </main>
         <?php
-            include "footer.inc.php"; 
+            include "./footer.inc.php"; 
         ?>
     </body>
 </html>

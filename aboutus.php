@@ -3,12 +3,12 @@
 <html>
     <head>
         <?php
-            include "includes.inc.php";
+            include "./includes.inc.php";
         ?>
     </head>
     <body>
         <?php
-            include "nav.inc.php";
+            include "./nav.inc.php";
         ?>
         <header>
             <h1>About Us</h1>
@@ -18,7 +18,7 @@
             
         </main>
         <?php
-            include "footer.inc.php"; 
+            include "./footer.inc.php"; 
         ?>
     </body>
 </html>

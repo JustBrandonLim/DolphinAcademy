@@ -2,17 +2,17 @@
 <html lang="en">
     <head>
         <?php
-            include "includes.inc.php";
+            include "./includes.inc.php";
         ?>
     </head>
     <body>
         <?php
-            include "nav.inc.php";
+            include "./nav.inc.php";
         ?>
         <main class="container-fluid">
             <header>
                 <h1>Login</h1> 
-                <p>For new users, please register <a href="./php/processes/process_login.php">here</a>!</p>
+                <p>For new users, please register <a href="./login.php">here</a>!</p>
             </header>
             <div class="row justify-content-center">
                 <div class="col-auto">
@@ -41,7 +41,7 @@
             </div>
         </main>
         <?php
-            include "footer.inc.php";
+            include "./footer.inc.php";
         ?>
     </body>
 </html>

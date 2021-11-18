@@ -1,7 +1,7 @@
 <html>
     <head>
         <?php
-        include "includes.inc.php";
+        include "./includes.inc.php";
         ?>
 
         <title>Dolphin Academy</title>
@@ -10,11 +10,11 @@
     </head>
     <body>
         <?php
-        include "nav.inc.php";
+        include "./nav.inc.php";
         ?>
         <main class="container">
             <h1>Setting</h1>
-            <form action="process_.php" method="post">
+            <form action="./process_.php" method="post">
                 <h2>Password</h2>
                 <p>Creating a password allows you to log in with your Dolphin Academy username and password.</p>
                 <div class="form-group">
@@ -37,7 +37,7 @@
             </form>
         </main>
         <?php
-        include "footer.inc.php";
+        include "./footer.inc.php";
         ?>
     </body>
 </html>

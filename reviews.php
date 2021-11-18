@@ -2,12 +2,12 @@
 <html lang="en">
     <head>
         <?php
-            include "includes.inc.php";
+            include "./includes.inc.php";
         ?>
     </head>
     <body>
         <?php
-            include "nav.inc.php";
+            include "./nav.inc.php";
         ?>
         <header>
             <h1>Reviews</h1>
@@ -16,7 +16,7 @@
         <main class="container-fluid">  
             <div class="row">
                 <?php
-                    require "php/DatabaseFunctions.php";
+                    require "./php/DatabaseFunctions.php";
                     
                     getTestimonials();                    
                 ?>
@@ -25,10 +25,9 @@
                 <textarea placeholder="Your thoughts go here!" class="form-control" rows="8" cols="100"></textarea>
                 <button type="submit" class="btn btn-primary mb-2">Submit</button>
             </form>
-            <!-->
         </main>
         <?php
-            include "footer.inc.php"; 
+            include "./footer.inc.php"; 
         ?>
     </body>
 </html>

@@ -2,16 +2,16 @@
 <html lang="en">
     <head>
         <?php
-            include "includes.inc.php";
+            include "./includes.inc.php";
         ?>
     </head>
     <body>
         <?php
-            include "nav.inc.php";
+            include "./nav.inc.php";
         ?>
         <main class="container-fluid">
             <?php
-                include "php/DatabaseFunctions.php";
+                include "./php/DatabaseFunctions.php";
                
                 //Check if POST
                 if ($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -140,7 +140,7 @@
             </div>
         </main> 
         <?php
-            include "footer.inc.php";
+            include "./footer.inc.php";
         ?>
     </body>
 </html>

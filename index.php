@@ -53,12 +53,12 @@
             }
         </style>
         <?php
-            include "includes.inc.php";
+            include "./includes.inc.php";
         ?>
     </head>
     <body>
         <?php
-            include "nav.inc.php";
+            include "./nav.inc.php";
         ?>
         <div id ="main" class="container-fluid p-0">
             <section class="one">
@@ -69,7 +69,7 @@
             </section>
         </div>
         <?php
-            include "footer.inc.php";
+            include "./footer.inc.php";
         ?>
     </body>
 </html>
