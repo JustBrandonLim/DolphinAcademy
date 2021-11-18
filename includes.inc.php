@@ -36,3 +36,5 @@
 
 <!-- Nav Bar JS -->
 <script src="./javascript/nav.js" ></script>
+
+<link rel="stylesheet" href="./css/main.css"/>

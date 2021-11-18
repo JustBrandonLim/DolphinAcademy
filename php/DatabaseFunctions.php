@@ -45,9 +45,7 @@ function getProducts()
     
     return $success;
 }
-?>
 
-<?php
 function saveMemberToDB() 
 {
     global $fname, $lname, $email, $pwd_hashed, $errorMsg, $success; 
@@ -76,7 +74,7 @@ function saveMemberToDB()
     $stmt->close(); 
     
     }
-$connectionGet->close(); 
+    $connectionGet->close(); 
 }
 
 function getTestimonials()

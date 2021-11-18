@@ -8,3 +8,10 @@ and open the template in the editor.
     Author     : Admin
 */
 
+.card {
+    width: 18rem;
+}
+
+.form-group {
+    margin: 0.625rem;
+}
