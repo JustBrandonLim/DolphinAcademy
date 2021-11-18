@@ -20,17 +20,15 @@
 
         try
         {
-            $statement = $connectionGet->prepare("INSERT INTO world_of_pets_members (fname, lname, email, password) VALUES (?, ?, ?, ?)");
+            $statement = $connectionGet->prepare("INSERT INTO dolphin_academy_users (fname, lname, email, password) VALUES (?, ?, ?, ?)");
             $statement->bind_param("ssss", $fname, $lname, $email, $pwd_hashed);
-            if (!$statement->execute())
-            {
-                $errorMessage = "An error has occured. Please try again.";
-            }
+            $statement->execute();
             $statement->close(); 
         } 
         catch (Exception $e)
         {
             $errorMessage = "An error has occured. Please try again."; 
+            return $errorMessage;
         }
         
         return $errorMessage;
@@ -170,18 +168,72 @@
         return $errorMessage;
     }
     
-    function addCourse()
+    function addCourse($courseName, $courseDescription)
     {
+        $errorMessage = "";
         
+        $connection = DatabaseConnection::getInstance();
+        $connectionGet = $connection->getConnection();
+
+        try
+        {
+            $statement = $connectionGet->prepare("INSERT INTO dolphin_academy_courses (name, description) VALUES (?, ?)");
+            $statement->bind_param("ss", $courseName, $courseDescription);
+            $statement->execute();
+            $statement->close(); 
+        } 
+        catch (Exception $e)
+        {
+            $errorMessage = "An error has occured. Please try again."; 
+            return $errorMessage;
+        }
+        
+        return $errorMessage;
     }
     
-    function deleteCourse()
+    function deleteCourse($selectedCourseName)
     {
+        $errorMessage = "";
         
+        $connection = DatabaseConnection::getInstance();
+        $connectionGet = $connection->getConnection();
+
+        try
+        {
+            $statement = $connectionGet->prepare("DELETE FROM dolphin_academy_courses WHERE name=?");
+            $statement->bind_param("s", $selectedCourseName);
+            $statement->execute();
+            $statement->close(); 
+        } 
+        catch (Exception $e)
+        {
+            $errorMessage = "An error has occured. Please try again."; 
+            return $errorMessage;
+        }
+        
+        return $errorMessage;
     }
     
-    function updateCourse()
+    function updateCourse($selectedCourseName, $courseName, $courseDescription)
     {
+        $errorMessage = "";
         
+        $connection = DatabaseConnection::getInstance();
+        $connectionGet = $connection->getConnection();
+
+        try
+        {
+            $statement = $connectionGet->prepare("UPDATE dolphin_academy_courses SET name=?, description=? WHERE name=?");
+            $statement->bind_param("sss", $courseName, $courseDescription, $selectedCourseName);
+            $statement->execute();
+            $statement->close(); 
+        } 
+        catch (Exception $e)
+        {
+            $errorMessage = "An error has occured. Please try again."; 
+            return $errorMessage;
+        }
+        
+        return $errorMessage;
     }
 ?>
