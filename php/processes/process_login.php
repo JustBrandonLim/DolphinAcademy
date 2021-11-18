@@ -3,6 +3,7 @@
     <head>
         <?php
             include "includes.inc.php";
+            include "databasefunctions.php";
         ?>
 </head>
 
@@ -40,16 +41,15 @@ function authenticateUser() {
     global $fname, $lname, $email, $Hpwd, $errorMsg, $success;
 
 // Create database connection.    
-    $config = parse_ini_file('../../private/db-config.ini');
-    $conn = new mysqli($config['servername'], $config['username'],
-            $config['password'], $config['dbname']);
+    
+    
 // Check connection    
-    if ($conn->connect_error) {
-        $errorMsg = "Connection failed: " . $conn->connect_error;
+    if ($connnectionGet->connect_error) {
+        $errorMsg = "Connection failed: " . $connectionGet->connect_error;
         $success = false;
     } else {
 // Prepare the statement:        
-        $stmt = $conn->prepare("SELECT * FROM world_of_pets_members WHERE email=?");
+        $stmt = $connectionGet->prepare("SELECT * FROM world_of_pets_members WHERE email=?");
 // Bind & execute the query statement:       
         $stmt->bind_param("s", $email);
         $stmt->execute();
@@ -73,12 +73,14 @@ function authenticateUser() {
         }
         $stmt->close();
     }
-    $conn->close();
+    $connectionGet->close();
 }
 
 if ($success) {
+            session_start();
+            $_SESSION["email"] = $email;
             echo "<h2>Login Successful!</h2>";
-            echo "<h4>Welcome back! $fname $lname</h4>";
+            echo "<h4>Welcome back!".$_SESSION["email"]."</h4>";
             echo '<a class="btn btn-primary" href="index.php" style = "background: green;">Return to Home</a>';
             echo '</div>';
             

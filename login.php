@@ -18,7 +18,7 @@
                 <div class="col-auto">
                     <div class="card small-card">
                         <div class="card-body">
-                            <form action="./php/processes/process_registernew.php" method="post">
+                            <form action="./php/processes/process_login.php" method="post">
                                 <div class="form-group">
                                     <label for="email">Email:</label>
                                     <input class="form-control" id="email" 
