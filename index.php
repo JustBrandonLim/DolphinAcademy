@@ -33,11 +33,15 @@ section{
     background-size: cover;   
 }
 
-.container a{
+#main a{
+    align-content: center;
     text-decoration: none;
     color: black;
-    font-size: 80px;
+    font-size: 10vh;
     margin-left: 16px; 
+}
+#main .container{
+    padding: 0;
 }
 a span{
     background-color: white;
@@ -58,21 +62,19 @@ p span{
             include "nav.inc.php";
         ?>
         <header>
-<!--            <h1 class="display-4">Welcome to Dolphin Academy!</h1>
-            <h2>Home of Learners</h2>-->
-        </header>
-<!--        <section>
-            Check out our available courses<a href=#> here!</a>
-        </section>-->
-        <div class="container">
+             <div id ="main" class="container-fluid p-0">
             <section class="zero">
                 <a href="aboutus.php"><span>Dolphin Academy</span></a>
             </section>
+             </div>
+        </header>
+
+        <div id ="main" class="container-fluid p-0">
             <section class="one">
-                <a href="products.php"><span>"Learn continually - there's always "one more thing" to learn" - Steve Jobs </span></a>
+                <a href="products.php"><span>"Learn continually - there's always<br>'one more thing' to learn,"<br>- Steve Jobs </span></a>
             </section>
             <section class="two">
-                <a href="products.php"><span>Maximise learning opportunities with us!</span></a>
+                <a href="products.php"><span>Maximise learning opportunities<br>with us!</span></a>
             </section>
         </div>
     </body>
