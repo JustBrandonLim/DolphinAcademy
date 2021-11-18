@@ -61,14 +61,6 @@ p span{
         <?php
             include "nav.inc.php";
         ?>
-        <header>
-             <div id ="main" class="container-fluid p-0">
-            <section class="zero">
-                <a href="aboutus.php"><span>Dolphin Academy</span></a>
-            </section>
-             </div>
-        </header>
-
         <div id ="main" class="container-fluid p-0">
             <section class="one">
                 <a href="products.php"><span>"Learn continually - there's always<br>'one more thing' to learn,"<br>- Steve Jobs </span></a>

@@ -46,3 +46,36 @@ function getProducts()
     return $success;
 }
 ?>
+
+<?php
+function saveMemberToDB() 
+{
+    global $fname, $lname, $email, $pwd_hashed, $errorMsg, $success; 
+    
+    // Create database connection.
+    $connection = DatabaseConnection::getInstance();
+    
+    $connectionGet = $connection->getConnection();
+    
+    // Check connection
+    if ($connectionGet->connect_error) 
+    {
+        $errorMsg = "Connection failed: " . $connectionGet->connect_error; 
+        $success = false;
+    } 
+    else 
+    {
+        // Prepare the statement:
+        $stmt = $connectionGet->prepare("INSERT INTO world_of_pets_members (fname, lname, email, password) VALUES (?, ?, ?, ?)");
+
+        // Bind & execute the query statement:
+        $stmt->bind_param("ssss", $fname, $lname, $email, $pwd_hashed); if (!$stmt->execute())
+    {
+        $errorMsg = "Execute failed: (" . $stmt->errno . ") " . $stmt->error; $success = false;
+    }
+    $stmt->close(); 
+    
+    }
+$connectionGet->close(); 
+}
+?>
