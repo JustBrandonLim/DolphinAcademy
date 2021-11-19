@@ -67,7 +67,7 @@
             ?>
             <header>
                 <h1>Login</h1> 
-                <p>For new users, please register <a href="./login.php">here</a>!</p>
+                <p>For new users, please register <a href="./register.php">here</a>!</p>
             </header>
             <div class="row justify-content-center">
                 <div class="col-auto">

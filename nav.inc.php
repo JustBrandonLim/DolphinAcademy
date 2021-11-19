@@ -46,6 +46,9 @@
                     </li>
                     <?php endif; ?>
                     <li class="nav-item">
+                        <a class="nav-link" href="./settings.php">Settings</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="./logout.php">Logout</a>
                     </li>
                 <?php else: ?>

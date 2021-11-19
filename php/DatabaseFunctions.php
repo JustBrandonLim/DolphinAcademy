@@ -281,4 +281,50 @@
         
         return $errorMessage;
     }
+    
+function deleteUser($email)
+    {
+        $errorMessage = "";
+        
+        $connection = DatabaseConnection::getInstance();
+        $connectionGet = $connection->getConnection();
+
+        try
+        {
+            $statement = $connectionGet->prepare("DELETE FROM dolphin_academy_users WHERE email=?");
+            $statement->bind_param("s", $email);
+            $statement->execute();
+            $statement->close(); 
+        } 
+        catch (Exception $e)
+        {
+            $errorMessage = "An error has occured. Please try again."; 
+            return $errorMessage;
+        }
+        
+        return $errorMessage;
+    }
+    function updatePassword($email,$pwd_hashed)
+    {
+        $errorMessage = "";
+        
+        $connection = DatabaseConnection::getInstance();
+        $connectionGet = $connection->getConnection();
+
+        try
+        {
+            $statement = $connectionGet->prepare("UPDATE dolphin_academy_users SET password=? WHERE email=?");
+            $statement->bind_param("ss",$pwd_hashed,$email);
+            $statement->execute();
+            $statement->close(); 
+        } 
+        catch (Exception $e)
+        {
+            $errorMessage = "An error has occured. Please try again."; 
+            return $errorMessage;
+        }
+        
+        return $errorMessage;
+    }
+    
 ?>
