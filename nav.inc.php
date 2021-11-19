@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Road+Rage&display=swap');
 #company_name{
@@ -37,12 +39,23 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="./register.php">Register</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./login.php">Login</a>
-                </li>
+                <?php if ($_SESSION["loggedin"] === true): ?>
+                    <?php if ($_SESSION["usergroup"] === 1): ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./admin.php">Admin</a>
+                    </li>
+                    <?php endif; ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./logout.php">Logout</a>
+                    </li>
+                <?php else: ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./register.php">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./login.php">Login</a>
+                    </li>
+                <?php endif; ?>
             </ul>
         </div>
     </div>

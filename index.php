@@ -1,57 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <style>
-            body{
-                /*background-color: #000 !important;*/
-            }
-            section{
-                height: 100vh;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-
-            }
-            .zero{
-                background-image: url("/images/dolphinaca1.jpg");
-                height: 100vh;
-                backgroud-position: center ;
-                background-repeat: no-repeat ;
-                background-size: cover ;   
-            }
-            .one{
-                background-image: url("/images/writing1.jpg");
-                height: 100vh;
-                backgroud-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;  
-
-            }
-            .two{
-                background-image: url("/images/programming1.jpg");
-                height: 100vh;
-                backgroud-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;   
-            }
-
-            #main a{
-                align-content: center;
-                text-decoration: none;
-                color: black;
-                font-size: 10vh;
-                margin-left: 16px; 
-            }
-            #main .container{
-                padding: 0;
-            }
-            a span{
-                background-color: white;
-            }
-            p span{
-                background-color: white;
-            }
-        </style>
         <?php
             include "./includes.inc.php";
         ?>

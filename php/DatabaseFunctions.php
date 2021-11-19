@@ -35,6 +35,51 @@
     }
     
     //Login
+    function loginMember($email, $pwd)
+    {
+        $errorMessage = "";
+        
+        $connection = DatabaseConnection::getInstance();
+        $connectionGet = $connection->getConnection();
+
+        try
+        {
+            $statement = $connectionGet->prepare("SELECT * FROM dolphin_academy_users WHERE email=?");
+            $statement->bind_param("s", $email);
+            $statement->execute();
+            $result = $statement->get_result();
+            if ($result->num_rows > 0)
+            {
+                $row = $result->fetch_assoc();
+                $pwd_hashed = $row["password"];
+                
+                if (!password_verify($_POST["pwd"], $pwd_hashed)) 
+                {               
+                    $errorMessage = "Your login information is incorrect. Please try again.";
+                }
+                else
+                {
+                    session_start();
+                    $_SESSION["loggedin"] = true;
+                    $_SESSION["lname"] = $row["lname"];
+                    $_SESSION["email"] = $email;
+                    $_SESSION["usergroup"] = $row["usergroup"];
+                }
+            }
+            else 
+            {
+                $errorMessage = "Your login information is incorrect. Please try again.";
+            }
+            $statement->close(); 
+        } 
+        catch (Exception $e)
+        {
+            $errorMessage = "An error has occured. Please try again."; 
+            return $errorMessage;
+        }
+        
+        return $errorMessage;
+    }
     
     //Courses
     function populateCourses()

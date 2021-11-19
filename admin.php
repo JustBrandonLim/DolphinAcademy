@@ -1,3 +1,12 @@
+<?php 
+    session_start();
+    if ($_SESSION["usergroup"] !== 1)
+    {
+        header("Location:./index.php"); 
+        die();
+    }
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,8 +25,6 @@
                 if ($_SERVER["REQUEST_METHOD"] == "POST")
                 {
                     $errorMessage = "";
-                    
-                    echo print_r($_POST);
                     
                     switch ($_POST["submit"]) {
                         case "add_course":
@@ -125,9 +132,9 @@
                                 </div>
 
                                 <div class="form-group">
-                                        <label for="cdesc">Course Description:</label>
-                                        <textarea class="form-control" id="cdescUpdate" maxlength="255" name="cdesc" 
-                                                placeholder="Enter course description"></textarea>
+                                    <label for="cdesc">Course Description:</label>
+                                    <textarea class="form-control" id="cdescUpdate" maxlength="255" name="cdesc" 
+                                            placeholder="Enter course description"></textarea>
                                 </div>
                                 
                                 <div class="form-group">
