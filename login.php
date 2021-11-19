@@ -51,6 +51,8 @@
                         if (empty($errorMessage))
                         {
                             echo "<script>alert(\"Thank you for logging in, " . $_SESSION["lname"] ."!\");</script>";
+                            echo "<script type=\"text/javascript\">window.location = \"./index.php\";</script>";
+                            die();
                         }
                         else
                         {
