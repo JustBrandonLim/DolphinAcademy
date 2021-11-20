@@ -64,6 +64,7 @@
                     $_SESSION["lname"] = $row["lname"];
                     $_SESSION["email"] = $email;
                     $_SESSION["usergroup"] = $row["usergroup"];
+                    $_SESSION["userid"] = $row["userid"];
                 }
             }
             else 
@@ -138,8 +139,8 @@
         }
         else
         {
-            // Prepare the statement:
-            $statement = $connectionGet->prepare("SELECT * FROM dolphin_academy_reviews INNER JOIN dolphin_academy_users ON dolphin_academy_reviews.fuser = dolphin_academy_users.id");
+            // Prepare the statement
+            $statement = $connectionGet->prepare("SELECT * FROM dolphin_academy_reviews INNER JOIN dolphin_academy_users ON dolphin_academy_reviews.fuser = dolphin_academy_users.userid");
             $statement->execute();
             $result = $statement->get_result();
             if ($result->num_rows > 0)
@@ -160,13 +161,99 @@
             }
             else
             {
-                echo "No testimonials found.";
+                echo "No reviews found.";
             }
             $statement->close();
         }
 
         return $success;
     }
+    
+    //Reviews
+    function addReview($review,$id)
+    {
+        $errormsg = "";
+
+        $connection = DatabaseConnection::getInstance();
+        $connectionGet = $connection->getConnection();
+
+        if ($connectionGet->connect_error)
+        {
+            echo "Connection failed! Error: " . $connectionGet->connect_error;
+        }
+        else
+        {
+            // Prepare the insert
+            $statement = $connectionGet->prepare("INSERT INTO dolphin_academy_reviews (content,fuser) VALUES (?,?)");
+            //bind param
+            $statement->bind_param("si",$review,$id);
+            //execute and check error
+            if(!$statement->execute()){
+                $errormsg = "An error has occurred. Please try again.";
+            };
+            //close connection
+            $statement->close();
+        }
+
+        return $errormsg;
+    }
+    
+    //Reviews
+    function checkReview($id)
+    {
+        $success = true;
+
+        $connection = DatabaseConnection::getInstance();
+        $connectionGet = $connection->getConnection();
+
+        if ($connectionGet->connect_error)
+        {
+            echo "Connection failed! Error: " . $connectionGet->connect_error;
+        }
+        else
+        {
+            // Prepare the insert
+            $statement = $connectionGet->prepare("SELECT * FROM dolphin_academy_reviews WHERE fuser = $id");
+            //execute and check error
+            if(!$statement->execute()){
+                $errormsg = "An error has occurred. Please try again.";
+            } else {
+                $statement->store_result();
+                $count = $statement->num_rows;
+            }
+            return $count;
+            //close connection
+            $statement->close();
+        }
+
+        return $errormsg;
+    }
+    
+    /*function getUserReview($id)
+    {
+        $connection = DatabaseConnection::getInstance();
+        $connectionGet = $connection->getConnection();
+
+        if ($connectionGet->connect_error)
+        {
+            echo "Connection failed! Error: " . $connectionGet->connect_error;
+        }
+        else
+        {
+            // Prepare the statement
+            $statement = $connectionGet->prepare("SELECT content FROM dolphin_academy_reviews WHERE fuser = $id");
+            if(!$statement->execute()){
+                $errormsg = "An error has occurred. Please try again.";
+            } else {
+                if ($statement->num_rows > 0){
+                    $result = $statement->store_result();
+                    $review = $result->fetch_object();
+                }
+            }
+            return $result;
+            $statement->close();
+        }
+    }*/
     
     //Admin
     function populateCoursesDropDown()
