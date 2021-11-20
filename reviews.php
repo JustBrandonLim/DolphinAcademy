@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -10,26 +13,28 @@
             include "./nav.inc.php";
         ?>
         <header>
-            <h1>Reviews</h1>
-            
+            <h1 style="padding-top: 10px;">Reviews</h1>
         </header>
-        <!-- if session cookie does not exists, -->
-        <div class="container">
-            <p>To leave a review, please login <a href="./login.php">here</a> first!</p>
-        </div>
-        <!-- if session cookie exists, -->
-        <main class="container">  
+        <main class="container"> 
             <div class="row">
                 <?php
                     require "./php/DatabaseFunctions.php";
                     
-                    getTestimonials();                    
+                    getReviews();                    
                 ?>
             </div>
-            <form class="form-inline">
-                <textarea placeholder="Your thoughts go here!" class="form-control" rows="8" cols="100" style="padding-bottom: 10px;"></textarea>
-                <button type="submit" class="btn btn-primary mb-2">Submit</button>
-            </form>
+            <?php
+                if ($_SESSION["loggedin"] != true){
+                    echo "<div class=\"container\">";
+                    echo "<p>To leave a review, please login <a href=\"./login.php\">here</a> first!</p>";
+                    echo "</div>";
+                } else {
+                    echo "<form class=\"form-inline\">";
+                    echo "<textarea placeholder=\"Your thoughts go here!\" class=\"form-control\" rows=\"8\" cols=\"100\" style=\"padding-bottom: 10px;\"></textarea>";
+                    echo "<button type=\"submit\" class=\"btn btn-primary mb-2\" style=\"margin-top:10px;\">Submit</button>";
+                    echo "</form>";
+                }
+            ?>
         </main>
         <?php
             include "./footer.inc.php"; 

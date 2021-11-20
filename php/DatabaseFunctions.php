@@ -125,7 +125,7 @@
     }
 
     //Reviews
-    function getTestimonials()
+    function getReviews()
     {
         $success = false;
 
@@ -139,7 +139,7 @@
         else
         {
             // Prepare the statement:
-            $statement = $connectionGet->prepare("SELECT * FROM dolphin_academy_testimonial INNER JOIN dolphin_academy_users ON dolphin_academy_testimonial.fuser = dolphin_academy_users.id");
+            $statement = $connectionGet->prepare("SELECT * FROM dolphin_academy_reviews INNER JOIN dolphin_academy_users ON dolphin_academy_reviews.fuser = dolphin_academy_users.id");
             $statement->execute();
             $result = $statement->get_result();
             if ($result->num_rows > 0)
