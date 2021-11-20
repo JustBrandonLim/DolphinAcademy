@@ -38,3 +38,4 @@
 <script src="./javascript/nav.js" ></script>
 
 <link rel="stylesheet" href="./css/main.css"/>
+<link rel="stylesheet " href = "https://fonts.googleapis.com/css2?family=Road+Rage&display=swap";/>

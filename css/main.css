@@ -32,3 +32,47 @@ header p {
 .form-check {
     margin: 0.625rem;
 }
+section{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.one{
+    background-image: url("../images/writing1.jpg");
+    height: 100vh;
+    backgroud-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;  
+
+}
+.two{
+    background-image: url("../images/programming1.jpg");
+    height: 100vh;
+    backgroud-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;   
+}
+
+#main a{  
+    text-decoration: none;
+    color: black;
+    font-size: 10vh;
+    
+}
+#main .container{
+    padding: 0;
+}
+#main span{
+    background-color: white;
+}
+
+#company_name{
+    font-family: 'Road Rage',cursive;
+    font-size: 7vh;
+    text-decoration: none;
+    color: white;
+    margin-left: 10px;
+}
