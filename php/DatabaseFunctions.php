@@ -229,8 +229,10 @@
         return $errormsg;
     }
     
-    /*function getUserReview($id)
+    function updateReview($review,$id)
     {
+        $errormsg = "";
+
         $connection = DatabaseConnection::getInstance();
         $connectionGet = $connection->getConnection();
 
@@ -240,20 +242,20 @@
         }
         else
         {
-            // Prepare the statement
-            $statement = $connectionGet->prepare("SELECT content FROM dolphin_academy_reviews WHERE fuser = $id");
+            // Prepare the insert
+            $statement = $connectionGet->prepare("UPDATE dolphin_academy_reviews SET content = ? WHERE fuser = ?");
+            //bind param
+            $statement->bind_param("si",$review,$id);
+            //execute and check error
             if(!$statement->execute()){
                 $errormsg = "An error has occurred. Please try again.";
-            } else {
-                if ($statement->num_rows > 0){
-                    $result = $statement->store_result();
-                    $review = $result->fetch_object();
-                }
-            }
-            return $result;
+            };
+            //close connection
             $statement->close();
         }
-    }*/
+
+        return $errormsg;
+    }
     
     //Admin
     function populateCoursesDropDown()
