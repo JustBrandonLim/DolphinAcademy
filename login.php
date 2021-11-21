@@ -86,7 +86,7 @@ if ($_SESSION["loggedin"] === true) {
                                 </div>
 
                                 
-                                <form class="form-group" id="frmContact" action="varify_captcha.php" method="POST" novalidate="novalidate">
+                                <form class="form-group" id="frmContact" method="POST" novalidate="novalidate">
                                     <div class="g-recaptcha" data-sitekey="6Lfo6EcdAAAAAIlcKsdyEcTIpdYRzztAWcz6dUfZ"></div>
                                     <input class="btn btn-primary" class="form-control" type="Submit" name="Submit">
                                 </form>
