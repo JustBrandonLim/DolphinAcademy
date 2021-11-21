@@ -1,6 +1,6 @@
-<?php session_start(); ?>
 <?php
-    include includes.inc.php
+    session_start();
+    include "includes.inc.php";
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">

@@ -1,20 +1,21 @@
 <?php
-session_start();
-if ($_SESSION["loggedin"] === true) {
-    header("Location:./index.php");
-    die();
-}
+    session_start();
+    if ($_SESSION["loggedin"] === true) {
+        header("Location:./index.php");
+        die();
+    }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <?php
-        include "./includes.inc.php";
+            include "./includes.inc.php";
         ?>
     </head>
     <body>
         <?php
-        include "./nav.inc.php";
+            include "./nav.inc.php";
         ?>
         <main class="container-fluid">
             <?php
@@ -39,29 +40,33 @@ if ($_SESSION["loggedin"] === true) {
                 
                 if(empty($_POST['g-recaptcha-response']))
                 {
-                    $errorMessage = "Some error in vrifying g-recaptcha";
+                    $errorMessage = "ReCaptcha is invalid.";
                 }
+                
                 if(!empty($_POST['g-recaptcha-response']))
                 {
-                $secret = '6Lfo6EcdAAAAAGeTjEVY3pqjywGlGngvxSDY-Htw';
-                $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$_POST['g-recaptcha-response']);
-                $responseData = json_decode($verifyResponse);  
-            }
-            
+                    $secret = '6Lfo6EcdAAAAAGeTjEVY3pqjywGlGngvxSDY-Htw';
+                    $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secret . '&response=' . $_POST['g-recaptcha-response']);
+                    $responseData = json_decode($verifyResponse);  
+                }
 
-            if (empty($errorMessage)) {
-            $errorMessage = loginMember($email, $pwd);
+                if (empty($errorMessage)) {
+                    $errorMessage = loginMember($email, $pwd);
 
-            if (empty($errorMessage)) {
-            echo "<script>alert(\"Thank you for logging in, ".$_SESSION["lname"]."!\");</script>";
-            echo "<script type=\"text/javascript\">window.location = \"./index.php\";</script>";
-            die();
-            } else {
-            echo "<script>alert(\"".$errorMessage."\");</script>";
-            }
-            } else {
-            echo "<script>alert(\"".$errorMessage."\");</script>";
-            }
+                    if (empty($errorMessage)) {
+                        echo "<script>alert(\"Thank you for logging in, ".$_SESSION["lname"]."!\");</script>";
+                        echo "<script type=\"text/javascript\">window.location = \"./index.php\";</script>";
+                        die();
+                    }
+                    else 
+                    {
+                        echo "<script>alert(\"".$errorMessage."\");</script>";
+                    }
+                } 
+                else 
+                {
+                    echo "<script>alert(\"".$errorMessage."\");</script>";
+                }
             }
             ?>
             <header>
@@ -84,21 +89,22 @@ if ($_SESSION["loggedin"] === true) {
                                     <input class="form-control" type="password" id="pwd"  
                                            name="pwd" placeholder="Enter password">
                                 </div>
-
                                 
-                                <form class="form-group" id="frmContact" action="varify_captcha.php" method="POST" novalidate="novalidate">
+                                <div class="form-group">
                                     <div class="g-recaptcha" data-sitekey="6Lfo6EcdAAAAAIlcKsdyEcTIpdYRzztAWcz6dUfZ"></div>
-                                    <input class="btn btn-primary" class="form-control" type="Submit" name="Submit">
-                                </form>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <button class="btn btn-primary" type="submit">Login</button>
+                                </div>
                             </form>
-
                         </div>
                     </div>
                 </div>
             </div>
         </main>
         <?php
-        include "./footer.inc.php";
+            include "./footer.inc.php";
         ?>
     </body>
 </html>
