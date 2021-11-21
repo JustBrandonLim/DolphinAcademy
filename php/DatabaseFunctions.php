@@ -102,9 +102,20 @@
                     echo "<div class=\"col\">";
                     echo "<div class=\"card small-card\">";
                     echo "<div class=\"card-body\">";
-                    echo "<h5 class=\"card-title\">" . $row["name"] . "</h5>";
+                    echo "<h5 class=\"card-title\">" . $row["name"] . "</h5>";                    
                     echo "<p class=\"card-text\">" . $row["description"] . "</p>";
-                    echo "<a href=\"#\" class=\"btn btn-primary\">View Video</a>";
+                    
+                    include "includes.inc.php";
+                    
+                    session_start();
+                    if ($_SESSION["loggedin"] === true)
+                    {
+                        echo "<a href=\"#\" class=\"btn btn-primary\">View Course</a>";
+                    }
+                    else  
+                    {
+                        echo "<a href=\"./login.php\" class=\"btn btn-primary\">Login to View Course</a>";
+                    }
                     echo "</div>";
                     echo "</div>";
                     echo "</div>";
@@ -170,7 +181,7 @@
     }
     
     //Reviews
-    function addReview($review,$id)
+    function addReview($review, $id)
     {
         $errormsg = "";
 
@@ -229,7 +240,7 @@
         return $errormsg;
     }
     
-    function updateReview($review,$id)
+    function updateReview($review, $id)
     {
         $errormsg = "";
 
@@ -371,7 +382,7 @@
         return $errorMessage;
     }
     
-function deleteUser($email)
+    function deleteUser($email)
     {
         $errorMessage = "";
         
@@ -393,7 +404,8 @@ function deleteUser($email)
         
         return $errorMessage;
     }
-    function updatePassword($email,$pwd_hashed)
+    
+    function updatePassword($email, $pwd_hashed)
     {
         $errorMessage = "";
         
