@@ -2,16 +2,16 @@
 <html lang="en">
     <head>
         <?php
-            include "./includes.inc.php";
+            include_once "./includes.inc.php";
         ?>
     </head>
     <body>
         <?php
-            include "./nav.inc.php";
+            include_once "./nav.inc.php";
         ?>
         <main class="container-fluid">
             <?php
-                include "./php/DatabaseFunctions.php";
+                include_once "./php/DatabaseFunctions.php";
                
                 //Check if POST
                 if ($_SERVER["REQUEST_METHOD"] == "POST")
@@ -26,7 +26,7 @@
                     
                     if (empty($_POST["lname"]))
                     {
-                        $errorMessage .= "Last Name is required.\\n";
+                        $errorMessage .= "Last Name is required.<br>";
                     }
                     else
                     {
@@ -35,7 +35,7 @@
                     
                     if (empty($_POST["email"]))
                     {
-                        $errorMessage .= "Email is required.\\n";
+                        $errorMessage .= "Email is required.<br>";
                     }
                     else
                     {
@@ -43,18 +43,18 @@
                         
                         if (!filter_var($email, FILTER_VALIDATE_EMAIL))
                         {
-                            $errorMessage .= "Invalid Email format.\\n";
+                            $errorMessage .= "Invalid Email format.<br>";
                         }
                     }
                     
                     if (empty($_POST["pwd"]))
                     {
-                        $errorMessage .= "Password is required.\\n";
+                        $errorMessage .= "Password is required.<br>";
                     }
                     
                     if (empty($_POST["pwd_confirm"]))
                     {
-                        $errorMessage .= "Confirm Password is required.\\n";
+                        $errorMessage .= "Confirm Password is required.<br>";
                     }
                     
                     if ($_POST["pwd"] === $_POST["pwd_confirm"])
@@ -63,7 +63,7 @@
                     }
                     else
                     {
-                        $errorMessage .= "Password and Confirm Password do not match!\\n";
+                        $errorMessage .= "Password and Confirm Password do not match!<br>";
                     }
                     
                     if (empty($errorMessage))
@@ -71,16 +71,30 @@
                         $errorMessage = registerMember($fname, $lname, $email, $pwd_hashed);
                         if (empty($errorMessage))
                         {
-                            echo "<script>alert(\"Thank you for registering, " . $lname . "!\");</script>";
+                            echo "<script type='text/javascript'>
+                                        $(document).ready(function(){
+                                        $(\"#modal-message\").html(\"Thank you for registering, " . $lname . "\");
+                                    });
+                                    </script>";
+                            echo "<script type='text/javascript'>
+                                        $(document).ready(function(){
+                                        $('#myModal').modal('show');
+                                    });
+                                    </script>";
+                            //echo "<script>alert(\"Thank you for registering, " . $lname . "!\");</script>";
                         }
                         else
                         {
-                            echo "<script>alert(\"" . $errorMessage . "\");</script>";
+                            echo "<script>document.getElementById(\"modal-message\").innerHTML = \"" . $errorMessage . "\";</script>";
+                            echo "<script>$(\"#myModal\").modal()</script>";
+                            //echo "<script>alert(\"" . $errorMessage . "\");</script>";
                         }
                     }
                     else
                     {
-                        echo "<script>alert(\"" . $errorMessage . "\");</script>";
+                        echo "<script>document.getElementById(\"modal-message\").innerHTML = \"" . $errorMessage . "\";</script>";
+                        echo "<script>$(\"#myModal\").modal()</script>";
+                        //echo "<script>alert(\"" . $errorMessage . "\");</script>";
                     }
                 }
             ?>
@@ -139,6 +153,24 @@
                 </div>
             </div>
         </main> 
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Dolphin Academy</h5>
+                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p id="modal-message">TEST</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         <?php
             include "./footer.inc.php";
         ?>
