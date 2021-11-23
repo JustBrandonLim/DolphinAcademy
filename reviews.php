@@ -7,6 +7,18 @@
         <?php
             include "./includes.inc.php";
         ?>
+        <script>
+            $(document).ready(function(){
+                var getbtn = document.getElementById("show_review");
+                getbtn.addEventListener("click", hide);
+                function hide(){
+                    console.log("inside hide");
+                    getbtn.style.display = "none";
+                    var getform = document.getElementById("form");
+                    getform.style.display = "block";
+                }
+            });
+        </script>
     </head>
     <body>
         <?php
@@ -85,7 +97,7 @@
                     }
                     else{
                         //enable update for existing review
-                        echo "<form action= '$page' method='post'>
+                        echo "<form action= '$page' method='post' style='display:none;' id='form'>
                             <div class='form-inline'>
                                 <label for='review'>Your Review Of Us:</label>
                                 <textarea class='form-control' id='update' name='update' rows='8' cols='100' style='padding-bottom: 10px;'></textarea>
@@ -94,6 +106,9 @@
                                 <button class='btn btn-success mb-2' type='submit' value='update_review' name='submit' style='margin-top: 10px;'>Update</button>
                             </div>
                         </form>";
+                        echo "<div class='form-inline'>
+                                <button class='btn btn-success mb-2' id='show_review' style='margin-top: 10px;'>Click to update existing review</button>
+                            </div>";
                     }
                 }
             ?>
