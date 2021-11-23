@@ -156,6 +156,7 @@
                 $row = $result->fetch_assoc();
                 $course_url = $row["url"];
                 $changed_course_url = str_replace("/var/www/html", ".", $course_url);
+                //1024×576
                 echo "<div class=\"ratio ratio-16x9\">
                         <video id=\"course\" src=\"" . $changed_course_url . "\" controls autoplay></video>
                     </div>";

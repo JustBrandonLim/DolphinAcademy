@@ -21,28 +21,32 @@
                 <p>Please do not distribute!</p>
             </header>
             <div class="row justify-content-center">
-                
-                    <?php
-                        include "./php/DatabaseFunctions.php";
+                <div class="col-auto">
+                    <div class="card large-card">
+                        <div class="card-body">
+                            <?php
+                                include "./php/DatabaseFunctions.php";
 
-                        if ($_SERVER["REQUEST_METHOD"] == "POST") 
-                        {
-                            $errorMessage = "";
-                            if (empty($_POST["submit"])) {
-                                $errorMessage .= "Something went wrong.\\n";
-                            }
-                            else
-                            {
-                                $errorMessage = viewCourse($_POST["submit"]);
-                            }
+                                if ($_SERVER["REQUEST_METHOD"] == "POST") 
+                                {
+                                    $errorMessage = "";
+                                    if (empty($_POST["submit"])) {
+                                        $errorMessage .= "Something went wrong.\\n";
+                                    }
+                                    else
+                                    {
+                                        $errorMessage = viewCourse($_POST["submit"]);
+                                    }
 
-                            if (!empty($errorMessage))
-                            {
-                                echo "<script>alert(\"" . $errorMessage . "\");</script>";
-                            }
-                        }
-                    ?>
-                
+                                    if (!empty($errorMessage))
+                                    {
+                                        echo "<script>alert(\"" . $errorMessage . "\");</script>";
+                                    }
+                                }
+                            ?>
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
         <?php
