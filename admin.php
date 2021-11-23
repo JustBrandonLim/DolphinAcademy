@@ -28,7 +28,14 @@
                     
                     switch ($_POST["submit"]) {
                         case "add_course":
-                            $errorMessage = addCourse($_POST["cname"], $_POST["cdesc"]);
+                            if(preg_match('/^.*\.(mp4|mov)$/i', $_FILES["cfile"]["name"])) 
+                            {
+                                $errorMessage = addCourse($_POST["cname"], $_POST["cdesc"], $_FILES["cfile"]);
+                            }
+                            else
+                            {
+                                $errorMessage = "Please upload only .MP4 files.\\n";
+                            }
                             break;
                         case "delete_course":
                             $errorMessage = deleteCourse($_POST["selectedCourseName"]);
@@ -54,21 +61,26 @@
             </header>
             <div class="row">
                 <div class="col-auto">
-                    <div class="card small-card">
+                    <div class="card medium-card">
                         <div class="card-body">
                             <h5 class="card-title">Add Course</h5>
                             <p class="card-text">This function allows you to add courses.</p>
-                            <form name="add_course_form" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post"> 
+                            <form name="add_course_form" action="<?php echo $_SERVER["PHP_SELF"]; ?>" enctype="multipart/form-data" method="post"> 
                                 <div class="form-group">
-                                    <label for="cname">Product Name:</label>
+                                    <label for="cname">Course Name:</label>
                                     <input class="form-control" type="text" id="cnameAdd" maxlength="45" name="cname" 
                                             placeholder="Enter product name">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="cdesc">Product Description:</label>
+                                    <label for="cdesc">Course Description:</label>
                                     <textarea class="form-control" id="cdescAdd" maxlength="255" name="cdesc" 
                                             placeholder="Enter product description"></textarea>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="cfile">Course Video (.MP4 only):</label>
+                                    <input type="file" class="form-control-file" id="cfile" name="cfile">
                                 </div>
                                 
                                 <div class="form-group">

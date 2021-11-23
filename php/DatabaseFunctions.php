@@ -110,7 +110,9 @@
                     session_start();
                     if ($_SESSION["loggedin"] === true)
                     {
-                        echo "<a href=\"#\" class=\"btn btn-primary\">View Course</a>";
+                        echo "<form action=\"./view_course.php\" method=\"post\">";
+                        echo "<button class=\"btn btn-primary\" type=\"submit\" value=\"". $row["name"] . "\" name=\"submit\"\">View " . $row["name"] . "</button>";
+                        echo "</form>";
                     }
                     else  
                     {
@@ -124,6 +126,43 @@
             else
             {
                 $errorMessage = "No courses available.";
+            }
+            $statement->close(); 
+        } 
+        catch (Exception $e)
+        {
+            $errorMessage = "An error has occured. Please try again.";
+            return $errorMessage;
+        }
+        
+        return $errorMessage;
+    }
+    
+    function viewCourse($name)
+    {
+        $errorMessage = "";
+        
+        $connection = DatabaseConnection::getInstance();
+        $connectionGet = $connection->getConnection();
+
+        try
+        {
+            $statement = $connectionGet->prepare("SELECT * FROM dolphin_academy_courses WHERE name=?");
+            $statement->bind_param("s", $name);
+            $statement->execute();
+            $result = $statement->get_result();
+            if ($result->num_rows > 0)
+            {
+                $row = $result->fetch_assoc();
+                $course_url = $row["url"];
+                $changed_course_url = str_replace("/var/www/html", ".", $course_url);
+                echo "<div class=\"ratio ratio-16x9\">
+                        <video id=\"course\" src=\"" . $changed_course_url . "\" controls autoplay></video>
+                    </div>";
+            }
+            else 
+            {
+                $errorMessage = "Course not found. Please try again.";
             }
             $statement->close(); 
         } 
@@ -313,17 +352,27 @@
         return $errorMessage;
     }
     
-    function addCourse($courseName, $courseDescription)
+    function addCourse($courseName, $courseDescription, $courseFile)
     {
         $errorMessage = "";
         
         $connection = DatabaseConnection::getInstance();
         $connectionGet = $connection->getConnection();
 
+        $sanitizedFileName = sanitizeInput($courseFile["name"]);
+        
+        $target_dir = $_SERVER['DOCUMENT_ROOT'] . "/uploads/";
+        $target_file = $target_dir . basename($sanitizedFileName);
+        
         try
         {
-            $statement = $connectionGet->prepare("INSERT INTO dolphin_academy_courses (name, description) VALUES (?, ?)");
-            $statement->bind_param("ss", $courseName, $courseDescription);
+            if (!move_uploaded_file($courseFile["tmp_name"], $target_file))
+            {
+                $errorMessage = "An error has occured. Your file was not uploaded.";
+            }
+            
+            $statement = $connectionGet->prepare("INSERT INTO dolphin_academy_courses (name, description, url) VALUES (?, ?, ?)");
+            $statement->bind_param("sss", $courseName, $courseDescription, $target_file);
             $statement->execute();
             $statement->close(); 
         } 

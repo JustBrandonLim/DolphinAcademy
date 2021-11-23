@@ -48,6 +48,10 @@ section{
 
 }
 
+.course {
+    margin: 0.625rem;
+}
+
 .one{
     background-image: url("../images/writing1.jpg");
     height: 100vh;

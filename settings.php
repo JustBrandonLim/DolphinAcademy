@@ -1,62 +1,58 @@
 <html>
     <head>
         <?php
-        include "./includes.inc.php";
+            include "./includes.inc.php";
         ?>
-
-        <title>Dolphin Academy</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <?php
-        include "./nav.inc.php";
+            include "./nav.inc.php";
         ?>
         <main class="container-fluid">
             <?php
-            include "./php/DatabaseFunctions.php";
+                include "./php/DatabaseFunctions.php";
 
-            if ($_SERVER["REQUEST_METHOD"] == "POST") 
-            {
-                $errorMessage = "";
-                if (empty($_POST["pwd"])) {
-                    $errorMessage .= "Password is required.\\n";
+                if ($_SERVER["REQUEST_METHOD"] == "POST") 
+                {
+                    $errorMessage = "";
+                    if (empty($_POST["pwd"])) {
+                        $errorMessage .= "Password is required.\\n";
+                    }
+
+                    if (empty($_POST["pwd_confirm"])) {
+                        $errorMessage .= "Confirm Password is required.\\n";
+                    }
+
+                    if ($_POST["pwd"] === $_POST["pwd_confirm"]) {
+                        $pwd_hashed = password_hash($_POST["pwd"], PASSWORD_DEFAULT);
+                    } else {
+                        $errorMessage .= "Password and Confirm Password do not match!\\n";
+                    }
+
+                    switch ($_POST["submit"]) {
+                        case "delete_user":
+                            $errorMessage = deleteUser($_SESSION["email"]);
+                            if (empty($errorMessage)) {
+                                session_start();
+                                session_unset();
+                                session_destroy();
+                                echo "<script type=\"text/javascript\">window.location = \"./index.php\";</script>";
+                                die();
+                            }
+                            break;
+
+                        case "update_password":
+                            $errorMessage = updatePassword($_SESSION["email"], $pwd_hashed);
+                            break;
+                    }
+
+                    if (empty($errorMessage)) {
+                        echo "<script type=\"text/javascript\">window.location = \"./index.php\";</script>";
+                        die();
+                    } else {
+                        echo "<script>alert(\"" . $errorMessage . "\");</script>";
+                    }
                 }
-
-                if (empty($_POST["pwd_confirm"])) {
-                    $errorMessage .= "Confirm Password is required.\\n";
-                }
-
-                if ($_POST["pwd"] === $_POST["pwd_confirm"]) {
-                    $pwd_hashed = password_hash($_POST["pwd"], PASSWORD_DEFAULT);
-                } else {
-                    $errorMessage .= "Password and Confirm Password do not match!\\n";
-                }
-
-                switch ($_POST["submit"]) {
-                    case "delete_user":
-                        $errorMessage = deleteUser($_SESSION["email"]);
-                        if (empty($errorMessage)) {
-                            session_start();
-                            session_unset();
-                            session_destroy();
-                            echo "<script type=\"text/javascript\">window.location = \"./index.php\";</script>";
-                            die();
-                        }
-                        break;
-
-                    case "update_password":
-                        $errorMessage = updatePassword($_SESSION["email"], $pwd_hashed);
-                        break;
-                }
-
-                if (empty($errorMessage)) {
-                    echo "<script type=\"text/javascript\">window.location = \"./index.php\";</script>";
-                    die();
-                } else {
-                    echo "<script>alert(\"" . $errorMessage . "\");</script>";
-                }
-            }
             ?>
             <header>
                 <h1>Settings</h1>
@@ -108,7 +104,7 @@
             </div>
         </main>
         <?php
-        include "./footer.inc.php";
+            include "./footer.inc.php";
         ?>
     </body>
 </html>
