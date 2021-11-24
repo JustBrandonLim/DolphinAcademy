@@ -32,42 +32,71 @@
                 <?php
                     include "./php/DatabaseFunctions.php";
                     getReviews(); 
+                    
                     //check if method is post
                     if ($_SERVER["REQUEST_METHOD"] == "POST"){
                         
                         $errorMsg = $review = $update = " ";
                         $id = $_SESSION["userid"];
                         
-                        switch ($_POST["submit"]) {
+                        switch ($_POST["submit"]) 
+                        {
                         case "add_review":
                             //check if empty
-                            if(empty($_POST["review"])){
+                            if(empty($_POST["review"]))
+                            {
                                 $errorMsg .= "Empty Review! Please enter your valuable review before submitting!";
                                 break;
                             }
-                            else{
+                            else
+                            {
                                 $review = htmlspecialchars($_POST["review"]);
                             }
                             
                             $errorMsg = addReview($review, $id);
                             break;
+                            
                         case "update_review":
-                            if(empty($_POST["update"])){
+                            if(empty($_POST["update"]))
+                            {
                                 $errorMsg .= "Empty Review! Please enter your valuable review before submitting!";
                                 break;
                             }
-                            else{
+                            else
+                            {
                                 $update = htmlspecialchars($_POST["update"]);
                             }
                             $errorMsg = updateReview($update, $id);
                             break;
                         }
-                        if (empty($errorMsg)){
-                            echo "<script>alert(\"Thank you for your review!\");</script>";
-                            echo "<script>window.location.replace('reviews.php');</script>";
+                        
+                        if (empty($errorMsg))
+                        {
+                            echo "<script type='text/javascript'>
+                                        $(document).ready(function(){
+                                        $(\"#modal-message\").html(\"Thank you for your review!\");
+                                    });
+                                    </script>";
+                            echo "<script type='text/javascript'>
+                                        $(document).ready(function(){
+                                        $('#myModal').modal('show');
+                                    });
+                                    </script>";
+                            echo "<script type='text/javascript'>
+                                        $(document).ready(function(){
+                                            $('#close').click(function(){
+                                                window.location.replace('reviews.php');
+                                            });
+                                        });
+                                    </script>";
+                            //echo "<script>alert(\"Thank you for your review!\");</script>";
+                            //echo "<script>window.location.replace('reviews.php');</script>";
                         }
-                        else {
-                            echo "<script>alert(\"" . $errorMsg . "\");</script>";
+                        else 
+                        {
+                            echo "<script>document.getElementById(\"modal-message\").innerHTML = \"" . $errorMsg . "\";</script>";
+                            echo "<script>$(\"#myModal\").modal()</script>";
+                            //echo "<script>alert(\"" . $errorMsg . "\");</script>";
                         }
                     }
                     
@@ -113,6 +142,24 @@
                 }
             ?>
         </main>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Dolphin Academy</h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="modal-message">TEST</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <?php
             include "./footer.inc.php"; 
         ?>
