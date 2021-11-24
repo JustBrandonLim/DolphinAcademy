@@ -8,6 +8,7 @@
             include "./includes.inc.php";
         ?>
         <script>
+            //javascript for toggling the 'click to update' button and the update form
             $(document).ready(function(){
                 var getbtn = document.getElementById("show_review");
                 getbtn.addEventListener("click", hide);
