@@ -191,7 +191,7 @@
         else
         {
             // Prepare the statement
-            $statement = $connectionGet->prepare("SELECT * FROM dolphin_academy_reviews INNER JOIN dolphin_academy_users ON dolphin_academy_reviews.fuser = dolphin_academy_users.userid ORDER BY id");
+            $statement = $connectionGet->prepare("SELECT * FROM dolphin_academy_reviews INNER JOIN dolphin_academy_users ON dolphin_academy_reviews.fuser = dolphin_academy_users.userid ORDER BY id DESC");
             $statement->execute();
             $result = $statement->get_result();
             if ($result->num_rows > 0)

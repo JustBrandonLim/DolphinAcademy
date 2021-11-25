@@ -121,7 +121,7 @@
                                 <textarea class='form-control' id='review' name='review' placeholder='Your thoughts go here!' rows='8' cols='100' style='padding-bottom: 10px;'></textarea>
                             </div>
                             <div class='form-inline'>
-                                <button class='btn btn-primary mb-2' type='submit' value='add_review' name='submit' style='margin-top: 10px;'>Submit</button>
+                                <button class='btn btn-primary mb-2' type='submit' value='add_review' name='submit' style='margin-top: 10px;'>Submit Review</button>
                             </div>
                         </form>";
                     }
@@ -137,7 +137,7 @@
                             </div>
                         </form>";
                         echo "<div class='form-inline'>
-                                <button class='btn btn-success mb-2' id='show_review' style='margin-top: 10px;'>Click to update existing review</button>
+                                <button class='btn btn-success mb-2' id='show_review' style='margin-top: 10px;'>Update Review</button>
                             </div>";
                     }
                 }
