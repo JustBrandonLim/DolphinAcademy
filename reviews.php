@@ -117,7 +117,7 @@
                         //enable add review
                         echo "<form action= '$page' method='post'>
                             <div class='form-inline'>
-                                <label for='review'>Your Review Of Us:</label>
+                                <label for='review'>Nice Review:</label>
                                 <textarea class='form-control' id='review' name='review' placeholder='Your thoughts go here!' rows='8' cols='100' style='padding-bottom: 10px;'></textarea>
                             </div>
                             <div class='form-inline'>
@@ -133,7 +133,7 @@
                                 <textarea class='form-control' id='update' name='update' rows='8' cols='100' style='padding-bottom: 10px;'></textarea>
                             </div>
                             <div class='form-inline'>
-                                <button class='btn btn-success mb-2' type='submit' value='update_review' name='submit' style='margin-top: 10px;'>Update</button>
+                                <button class='btn btn-success mb-2' type='submit' value='update_review' name='submit' style='margin-top: 10px;'>Update Review</button>
                             </div>
                         </form>";
                         echo "<div class='form-inline'>

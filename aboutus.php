@@ -6,12 +6,12 @@
             include "./includes.inc.php";
         ?>
     </head>
-    <body style="background-color: #123;color: white;">
+    <body>
         <?php
             include "./nav.inc.php";
         ?>
         <header>
-            <h1 style="color:white;">About Us</h1>
+            <h1>About Us</h1>
             <p>Introducing the 4 developers of Dolphin Academy</p>
         </header>
         <main>
