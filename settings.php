@@ -14,19 +14,21 @@
             include "./php/DatabaseFunctions.php";
 
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                $errorMessage1 = "";
                 $errorMessage = "";
                 if (empty($_POST["pwd"])) {
-                    $errorMessage .= "Password is required.";
+                    $errorMessage1 .= "Password is required.";
                 }
 
                 if (empty($_POST["pwd_confirm"])) {
-                    $errorMessage .= "Confirm Password is required.";
+                    $errorMessage1 .= "Confirm Password is required.";
                 }
 
                 if ($_POST["pwd"] === $_POST["pwd_confirm"]) {
                     $pwd_hashed = password_hash($_POST["pwd"], PASSWORD_DEFAULT);
-                } else {
-                    $errorMessage .= "Password and Confirm Password do not match!";
+                } 
+                else {
+                    $errorMessage1 .= "Password and Confirm Password do not match!";
                 }
 
                 switch ($_POST["submit"]) {
@@ -59,7 +61,7 @@
 
                     case "update_password":
                         $errorMessage = updatePassword($_SESSION["email"], $pwd_hashed);
-                        if (empty($errorMessage)) {
+                        if (empty($errorMessage1)) {
                             echo "<script type='text/javascript'>
                                         $(document).ready(function(){
                                         $(\"#modal-message\").html(\"Your password has been changed\");
@@ -80,7 +82,7 @@
                         } else {
                             echo "<script type='text/javascript'>
                                         $(document).ready(function(){
-                                        $(\"#modal-message\").html(\"" . $errorMessage . "\");
+                                        $(\"#modal-message\").html(\"" . $errorMessage1 . "\");
                                     });
                                     </script>";
                             echo "<script type='text/javascript'>
