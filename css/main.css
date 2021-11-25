@@ -70,9 +70,10 @@ section{
 
 #main a{  
     text-decoration: none;
+    text-align: center;
     color: white;
     text-shadow: 3px 3px 0 black;
-    font-size: 10vh;
+    font-size: 4rem;
     
 }
 #main .container{
