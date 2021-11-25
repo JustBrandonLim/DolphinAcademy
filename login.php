@@ -1,9 +1,9 @@
 <?php
-session_start();
-if ($_SESSION["loggedin"] === true) {
-    header("Location:./index.php");
-    die();
-}
+    session_start();
+    if ($_SESSION["loggedin"] === true) {
+        header("Location:./index.php");
+        die();
+    }
 ?>
 
 <!DOCTYPE html>
