@@ -85,16 +85,30 @@
                         }
                         else
                         {
-                            echo "<script>document.getElementById(\"modal-message\").innerHTML = \"" . $errorMessage . "\";</script>";
-                            echo "<script>$(\"#myModal\").modal()</script>";
-                            //echo "<script>alert(\"" . $errorMessage . "\");</script>";
+                            echo "<script type='text/javascript'>
+                                        $(document).ready(function(){
+                                        $(\"#modal-message\").html(\"" . $errorMessage . "\");
+                                    });
+                                    </script>";
+                            echo "<script type='text/javascript'>
+                                        $(document).ready(function(){
+                                        $('#myModal').modal('show');
+                                    });
+                                    </script>";
                         }
                     }
                     else
                     {
-                        echo "<script>document.getElementById(\"modal-message\").innerHTML = \"" . $errorMessage . "\";</script>";
-                        echo "<script>$(\"#myModal\").modal()</script>";
-                        //echo "<script>alert(\"" . $errorMessage . "\");</script>";
+                        echo "<script type='text/javascript'>
+                                        $(document).ready(function(){
+                                        $(\"#modal-message\").html(\"" . $errorMessage . "\");
+                                    });
+                                    </script>";
+                            echo "<script type='text/javascript'>
+                                        $(document).ready(function(){
+                                        $('#myModal').modal('show');
+                                    });
+                                    </script>";
                     }
                 }
             ?>
