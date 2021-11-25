@@ -52,16 +52,25 @@
                                         $(\"#modal-message\").html(\"Operation succeeded!\");
                                     });
                                     </script>";
-                            echo "<script type='text/javascript'>
-                                        $(document).ready(function(){
-                                        $('#myModal').modal('show');
-                                    });
-                                    </script>";
+                        echo "<script type='text/javascript'>
+                                    $(document).ready(function(){
+                                    $('#myModal').modal('show');
+                                });
+                                </script>";
                         //echo "<script>alert(\"Operation succeeded!\");</script>";
                     }
                     else
                     {
-                        echo "<script>alert(\"" . $errorMessage . "\");</script>";
+                        echo "<script type='text/javascript'>
+                                        $(document).ready(function(){
+                                        $(\"#modal-message\").html(\"" . $errorMessage . "\");
+                                    });
+                                    </script>";
+                        echo "<script type='text/javascript'>
+                                    $(document).ready(function(){
+                                    $('#myModal').modal('show');
+                                });
+                                </script>";
                     }
                 }
             ?>
