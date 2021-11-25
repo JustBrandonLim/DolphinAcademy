@@ -11,10 +11,10 @@
         ?>
         <div id ="main" class="container-fluid p-0" class="jumbotron jumbotron-fluid">
             <section class="one">
-                <a href="courses.php"><span>"Learn continually - there's always<br>'one more thing' to learn,"<br>- Steve Jobs </span></a>
+                <a href="courses.php"><span>"Learn continually - there's always<br>'one more thing' to learn," - Steve Jobs </span></a>
             </section>
             <section class="two">
-                <a href="courses.php"><span>Maximise learning opportunities<br>with us!</span></a>
+                <a href="courses.php"><span>Maximise learning opportunities with us!</span></a>
             </section>
         </div>
         <?php

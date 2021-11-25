@@ -1,11 +1,12 @@
 <?php
     session_start();
-    if ($_SESSION["loggedin"] === false) {
+    if ($_SESSION["loggedin"] !== true) {
         header("Location:./index.php");
         die();
     }
 ?>
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <?php
             include "./includes.inc.php";

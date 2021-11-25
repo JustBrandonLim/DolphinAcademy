@@ -394,11 +394,29 @@
         $connectionGet = $connection->getConnection();
 
         try
-        {
+        {   
+            $getStatement = $connectionGet->prepare("SELECT url FROM dolphin_academy_courses WHERE name=?");
+            $getStatement->bind_param("s", $selectedCourseName);
+            $getStatement->execute();
+            $result = $getStatement->get_result();
+            if ($result->num_rows > 0)
+            {
+                $row = $result->fetch_assoc();
+                if (!unlink($row["url"]))
+                {
+                    $errorMessage = "Deleting failed.";
+                }
+            }
+            else
+            {
+                $errorMessage = "No courses available.";
+            }
+            $getStatement->close(); 
+            
             $statement = $connectionGet->prepare("DELETE FROM dolphin_academy_courses WHERE name=?");
             $statement->bind_param("s", $selectedCourseName);
             $statement->execute();
-            $statement->close(); 
+            $statement->close();
         } 
         catch (Exception $e)
         {
