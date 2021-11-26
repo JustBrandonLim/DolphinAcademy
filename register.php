@@ -118,7 +118,7 @@
             </header>
             <div class="row justify-content-center">
                 <div class="col-auto">
-                    <div class="card large-card">
+                    <div class="card large-card" style="width: 28rem;">
                         <div class="card-body">
                             <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post"> 
                                 <div class="form-group">

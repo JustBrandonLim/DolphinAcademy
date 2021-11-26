@@ -10,63 +10,21 @@
         <?php
             include "./nav.inc.php";
         ?>
-        <header>
-            <h1>About Us</h1>
-            <p>Introducing the 4 developers of Dolphin Academy</p>
-        </header>
         <main>
-            <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="2000">
-                <ol class="carousel-indicators">
-                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                  <li data-target="#myCarousel" data-slide-to="1"></li>
-                  <li data-target="#myCarousel" data-slide-to="2"></li>
-                  <li data-target="#myCarousel" data-slide-to="3"></li>
-                </ol>
-                <div class="carousel-inner container">
-                    <div class="carousel-item active">
-                        <div class="container">
-                            <img class="d-block w-100" src="assets/cool.jpg" alt="First slide">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h2 style="color: white;">Brandon</h2>
-                              <p>description</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="container">
-                            <img class="d-block w-100" src="assets/cool.jpg" alt="Second slide">
-                            <div class="carousel-caption d-none d-md-block">
-                              <h2 style="color: white;">Priya</h2>
-                              <p>description</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                      <div class="container">
-                          <img class="d-block w-100" src="assets/cool.jpg" alt="Third slide">
-                          <div class="carousel-caption d-none d-md-block">
-                            <h2 style="color: white;">Ismael</h2>
-                            <p>description</p>
-                          </div>
-                      </div>
-                    </div>
-                    <div class="carousel-item">
-                      <div class="container">
-                          <img class="d-block w-100" src="assets/cool.jpg" alt="Fourth slide">
-                          <div class="carousel-caption d-none d-md-block">
-                            <h2 style="color: white;">Elysia</h2>
-                            <p>description</p>
-                          </div>
-                      </div>
-                    </div>
-                </div>
-                  <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  </a>
-                  <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  </a>
-            </div>
+            <section class="three">
+                <img class="image-fluid"src="../images/member2.jpg" width="250" height="400" alt="alt"/>
+                <h2><strong>GEORGE TANNER</strong><br>Founder of Dolphin Academy</h2>
+            </section>
+            <section class="four">
+                <p>Founded in 2021, Dolphin Academy is passionate and dedicated in providing courses to those willing to learn! 
+                    With a wide variety of courses, we are sure there's something for everyone!
+                    We provide top quality materials no matter the course!
+                    Due to the ever-changing conditions caused by global events, learning from home has been the norm.
+                    We seek to provide a venue with quality courses for those willing to take up new challenges!</p>
+            </section>
+                    
+
+
         </main>
         <?php
             include "./footer.inc.php"; 
