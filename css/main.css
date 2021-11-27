@@ -52,30 +52,19 @@ section {
     margin: 0.625rem;
 }
 
-.first-quote-jumbotron {
-    background-image: url(".././images/writing1.jpg");
-    padding: 2rem 1rem;
-    background-color: #e9ecef;
-    border-radius: .3rem;
-}
-
-.second-quote-jumbotron {
+.landing-page-jumbotron {
     background-image: url(".././images/programming1.jpg");
     padding: 2rem 1rem;
     background-color: #e9ecef;
     border-radius: .3rem;
 }
 
-#main a{  
+#main a {  
     text-decoration: none;
     text-align: center;
     color: white;
     text-shadow: 3px 3px 0 black;
     font-size: 4rem;
-    
-}
-#main .container{
-    padding: 0;
 }
 
 #company_name{

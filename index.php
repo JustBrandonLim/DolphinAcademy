@@ -11,11 +11,8 @@
         ?>
         <main>
             <div id ="main" class="container-fluid p-0">
-                <section class="first-quote-jumbotron">
-                    <a href="courses.php"><span>"Learn continually - there's always<br>'one more thing' to learn," - Steve Jobs </span></a>
-                </section>
-                <section class="second-quote-jumbotron">
-                    <a href="courses.php"><span>Maximize learning opportunities with us!</span></a>
+                <section class="landing-page-jumbotron">
+                    <h1><a href="courses.php">"Learn continually - there's always<br>'one more thing' to learn," - Steve Jobs </a></h1>
                 </section>
             </div>
         </main>
