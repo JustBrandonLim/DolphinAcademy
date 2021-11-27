@@ -22,7 +22,10 @@
         {
             $statement = $connectionGet->prepare("INSERT INTO dolphin_academy_users (fname, lname, email, password) VALUES (?, ?, ?, ?)");
             $statement->bind_param("ssss", $fname, $lname, $email, $pwd_hashed);
-            $statement->execute();
+            if (!$statement->execute())
+            {
+                $errorMessage = "An error has occured. Please try again."; 
+            }
             $statement->close(); 
         } 
         catch (Exception $e)
@@ -46,7 +49,10 @@
         {
             $statement = $connectionGet->prepare("SELECT * FROM dolphin_academy_users WHERE email=?");
             $statement->bind_param("s", $email);
-            $statement->execute();
+            if (!$statement->execute())
+            {
+                $errorMessage = "An error has occured. Please try again."; 
+            }
             $result = $statement->get_result();
             if ($result->num_rows > 0)
             {
@@ -93,7 +99,10 @@
         try
         {
             $statement = $connectionGet->prepare("SELECT * FROM dolphin_academy_courses");
-            $statement->execute();
+            if (!$statement->execute())
+            {
+                $errorMessage = "An error has occured. Please try again."; 
+            }
             $result = $statement->get_result();
             if ($result->num_rows > 0)
             {
@@ -149,7 +158,10 @@
         {
             $statement = $connectionGet->prepare("SELECT * FROM dolphin_academy_courses WHERE name=?");
             $statement->bind_param("s", $name);
-            $statement->execute();
+            if (!$statement->execute())
+            {
+                $errorMessage = "An error has occured. Please try again."; 
+            }
             $result = $statement->get_result();
             if ($result->num_rows > 0)
             {
@@ -192,7 +204,10 @@
         {
             // Prepare the statement
             $statement = $connectionGet->prepare("SELECT * FROM dolphin_academy_reviews INNER JOIN dolphin_academy_users ON dolphin_academy_reviews.fuser = dolphin_academy_users.userid ORDER BY id DESC");
-            $statement->execute();
+            if (!$statement->execute())
+            {
+                $errorMessage = "An error has occured. Please try again."; 
+            }
             $result = $statement->get_result();
             if ($result->num_rows > 0)
             {
@@ -241,7 +256,7 @@
             //execute and check error
             if(!$statement->execute()){
                 $errormsg = "An error has occurred. Please try again.";
-            };
+            }
             //close connection
             $statement->close();
         }
@@ -300,7 +315,7 @@
             //execute and check error
             if(!$statement->execute()){
                 $errormsg = "An error has occurred. Please try again.";
-            };
+            }
             //close connection
             $statement->close();
         }
@@ -321,7 +336,10 @@
         try
         {
             $statement = $connectionGet->prepare("SELECT * FROM dolphin_academy_courses");
-            $statement->execute();
+            if (!$statement->execute())
+            {
+                $errorMessage = "An error has occured. Please try again."; 
+            }
             $result = $statement->get_result();
             if ($result->num_rows > 0)
             {
@@ -374,7 +392,10 @@
             
             $statement = $connectionGet->prepare("INSERT INTO dolphin_academy_courses (name, description, url) VALUES (?, ?, ?)");
             $statement->bind_param("sss", $courseName, $courseDescription, $target_file);
-            $statement->execute();
+            if (!$statement->execute())
+            {
+                $errorMessage = "An error has occured. Please try again."; 
+            }
             $statement->close(); 
         } 
         catch (Exception $e)
@@ -397,7 +418,10 @@
         {   
             $getStatement = $connectionGet->prepare("SELECT url FROM dolphin_academy_courses WHERE name=?");
             $getStatement->bind_param("s", $selectedCourseName);
-            $getStatement->execute();
+            if (!$getStatement->execute())
+            {
+                $errorMessage = "An error has occured. Please try again."; 
+            }
             $result = $getStatement->get_result();
             if ($result->num_rows > 0)
             {
@@ -415,7 +439,10 @@
             
             $statement = $connectionGet->prepare("DELETE FROM dolphin_academy_courses WHERE name=?");
             $statement->bind_param("s", $selectedCourseName);
-            $statement->execute();
+            if (!$statement->execute())
+            {
+                $errorMessage = "An error has occured. Please try again."; 
+            }
             $statement->close();
         } 
         catch (Exception $e)
@@ -438,7 +465,10 @@
         {
             $statement = $connectionGet->prepare("UPDATE dolphin_academy_courses SET name=?, description=? WHERE name=?");
             $statement->bind_param("sss", $courseName, $courseDescription, $selectedCourseName);
-            $statement->execute();
+            if (!$statement->execute())
+            {
+                $errorMessage = "An error has occured. Please try again."; 
+            }
             $statement->close(); 
         } 
         catch (Exception $e)
@@ -461,7 +491,10 @@
         {
             $statement = $connectionGet->prepare("DELETE FROM dolphin_academy_users WHERE email=?");
             $statement->bind_param("s", $email);
-            $statement->execute();
+            if (!$statement->execute())
+            {
+                $errorMessage = "An error has occured. Please try again."; 
+            }
             $statement->close(); 
         } 
         catch (Exception $e)
@@ -484,7 +517,10 @@
         {
             $statement = $connectionGet->prepare("UPDATE dolphin_academy_users SET password=? WHERE email=?");
             $statement->bind_param("ss",$pwd_hashed,$email);
-            $statement->execute();
+            if (!$statement->execute())
+            {
+                $errorMessage = "An error has occured. Please try again."; 
+            }
             $statement->close(); 
         } 
         catch (Exception $e)
