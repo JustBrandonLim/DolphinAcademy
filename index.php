@@ -9,14 +9,16 @@
         <?php
             include "./nav.inc.php";
         ?>
-        <div id ="main" class="container-fluid p-0" class="jumbotron jumbotron-fluid">
-            <section class="first-quote-jumbotron">
-                <a href="courses.php"><span>"Learn continually - there's always<br>'one more thing' to learn," - Steve Jobs </span></a>
-            </section>
-            <section class="second-quote-jumbotron">
-                <a href="courses.php"><span>Maximize learning opportunities with us!</span></a>
-            </section>
-        </div>
+        <main>
+            <div id ="main" class="container-fluid p-0" class="jumbotron jumbotron-fluid">
+                <section class="first-quote-jumbotron">
+                    <a href="courses.php"><span>"Learn continually - there's always<br>'one more thing' to learn," - Steve Jobs </span></a>
+                </section>
+                <section class="second-quote-jumbotron">
+                    <a href="courses.php"><span>Maximize learning opportunities with us!</span></a>
+                </section>
+            </div>
+        </main>
         <?php
             include "./footer.inc.php";
         ?>
