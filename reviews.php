@@ -161,6 +161,7 @@
                 </div>
             </div>
         </div>
+        <p>test</p>
         <?php
             include "./footer.inc.php"; 
         ?>
