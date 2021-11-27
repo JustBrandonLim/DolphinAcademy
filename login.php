@@ -69,15 +69,6 @@
                                             });
                                         });
                                     </script>";
-                        
-                        //echo "<script type=\"text/javascript\">window.location = \"./index.php\";</script>";
-                        
-                        
-                        
-                                        
-                                    
-
-                        //die();
                     } else {
                         echo "<script type='text/javascript'>
                                         $(document).ready(function(){
