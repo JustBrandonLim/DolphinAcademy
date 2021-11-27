@@ -87,46 +87,15 @@ section{
     color: white;
     margin-left: 10px;
 }
-.three{
-    background-color:#123;
-    height: 50vh;
-    backgroud-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;   
-}
-.three h2{  
-    padding-left: 5px;
-    text-decoration: none;
-    text-align: center;
-    color: white;
-    text-shadow: 3px 3px 0 black;
-    font-size: 2rem;
-    
-}
-.four{
-    background-color:#123;
-    height: 50vh;
-    backgroud-position: center;
-    background-repeat: no-repeat;
-    background-size: cover; 
-}
-.four p{  
-    text-decoration: none;
-    text-align: center;
-    color: white;
-    text-shadow: 3px 3px 0 black;
-    font-size: 1.5rem;
-    margin-left: 5px;
-    margin-right: 5px;
-    
-}
+
 footer {
-border-top: 5px solid #555;
-text-align: center;
-font-style: italic;
-font-size: 18px;
-background-color: #3459e6;
+    border-top: 5px solid #555;
+    text-align: center;
+    font-style: italic;
+    font-size: 18px;
+    background-color: #3459e6;
 }
+
 footer p{
     color: white;
 }
