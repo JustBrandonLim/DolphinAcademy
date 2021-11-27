@@ -14,7 +14,7 @@
                 <section class="first-quote-jumbotron">
                     <a href="courses.php"><span>"Learn continually - there's always<br>'one more thing' to learn," - Steve Jobs </span></a>
                 </section>
-                <section class="jumbotron">
+                <section class="second-quote-jumbotron">
                     <a href="courses.php"><span>Maximize learning opportunities with us!</span></a>
                 </section>
             </div>
