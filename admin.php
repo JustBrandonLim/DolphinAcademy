@@ -26,22 +26,63 @@
                 {
                     $errorMessage = "";
                     
+                    $courseName = $courseDescription = "";
+                    
                     switch ($_POST["submit"]) {
                         case "add_course":
-                            if(preg_match('/^.*\.(mp4|mov)$/i', $_FILES["cfile"]["name"])) 
+                            if (empty($_POST["cname"]))
                             {
-                                $errorMessage = addCourse($_POST["cname"], $_POST["cdesc"], $_FILES["cfile"]);
+                                $errorMessage .= "Course Name is required.<br>";
                             }
                             else
                             {
-                                $errorMessage = "Please upload only .MP4 files.\\n";
+                                $courseName = sanitizeInput($_POST["cname"]);
+                            }
+                            
+                            if (empty($_POST["cdesc"]))
+                            {
+                                $errorMessage .= "Course Name is required.<br>";
+                            }
+                            else
+                            {
+                                $courseDescription = sanitizeInput($_POST["cdesc"]);
+                            }
+                            
+                            if(preg_match('/^.*\.(mp4|mov)$/i', $_FILES["cfile"]["name"]) && empty($errorMessage)) 
+                            {
+                                $errorMessage = addCourse($courseName, $courseDescription, $_FILES["cfile"]);
+                            }
+                            else
+                            {
+                                $errorMessage .= "Please upload only .MP4 files.\\n";
                             }
                             break;
                         case "delete_course":
                             $errorMessage = deleteCourse($_POST["selectedCourseName"]);
                             break;
                         case "update_course":
-                            $errorMessage = updateCourse($_POST["selectedCourseName"], $_POST["cname"], $_POST["cdesc"]);
+                            if (empty($_POST["cname"]))
+                            {
+                                $errorMessage .= "Course Name is required.<br>";
+                            }
+                            else
+                            {
+                                $courseName = sanitizeInput($_POST["cname"]);
+                            }
+                            
+                            if (empty($_POST["cdesc"]))
+                            {
+                                $errorMessage .= "Course Name is required.<br>";
+                            }
+                            else
+                            {
+                                $courseDescription = sanitizeInput($_POST["cdesc"]);
+                            }
+                            
+                            if (empty($errorMessage))
+                            {
+                                $errorMessage = updateCourse($_POST["selectedCourseName"], $courseName, $courseDescription);
+                            }
                             break;
                     }
                                      
