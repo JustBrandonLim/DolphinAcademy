@@ -116,7 +116,7 @@
                         //enable update for existing review
                         echo "<form action= '$page' method='post' style='display:none;' id='form'>
                             <div class='form-inline'>
-                                <label for='review'>Your Review Of Us:</label>
+                                <label for='review'>Your Review:</label>
                                 <textarea class='form-control' id='update' name='update' rows='8' cols='100' style='padding-bottom: 10px;'></textarea>
                             </div>
                             <div class='form-inline'>

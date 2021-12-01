@@ -369,6 +369,53 @@
         return $errorMessage;
     }
     
+    function populateReviewsDropDown()
+    {
+        $selected = false;
+        
+        $errorMessage = "";
+        
+        $connection = DatabaseConnection::getInstance();
+        $connectionGet = $connection->getConnection();
+
+        try
+        {
+            $statement = $connectionGet->prepare("SELECT * FROM dolphin_academy_reviews");
+            if (!$statement->execute())
+            {
+                $errorMessage = "An error has occured. Please try again."; 
+            }
+            $result = $statement->get_result();
+            if ($result->num_rows > 0)
+            {
+                while($row = $result->fetch_assoc()) 
+                {
+                    if (!$selected)
+                    {
+                        echo "<option selected value=\"" . $row["content"] . "\">" . $row["content"] . "</option>";
+                        $selected = true;
+                    }
+                    else
+                    {
+                        echo "<option value=\"" . $row["content"] . "\">" . $row["content"] . "</option>";
+                    }
+                }
+            }
+            else
+            {
+                $errorMessage = "No reviews available.";
+            }
+            $statement->close(); 
+        } 
+        catch (Exception $e)
+        {
+            $errorMessage = "An error has occured. Please try again.";
+            return $errorMessage;
+        }
+        
+        return $errorMessage;
+    }
+    
     function addCourse($courseName, $courseDescription, $courseFile)
     {
         $errorMessage = "";
@@ -468,6 +515,32 @@
                 $errorMessage = "An error has occured. Please try again."; 
             }
             $statement->close(); 
+        } 
+        catch (Exception $e)
+        {
+            $errorMessage = "An error has occured. Please try again."; 
+            return $errorMessage;
+        }
+        
+        return $errorMessage;
+    }
+    
+    function deleteReview($selectedContent)
+    {
+        $errorMessage = "";
+        
+        $connection = DatabaseConnection::getInstance();
+        $connectionGet = $connection->getConnection();
+
+        try
+        {   
+            $statement = $connectionGet->prepare("DELETE FROM dolphin_academy_reviews WHERE content=?");
+            $statement->bind_param("s", $selectedContent);
+            if (!$statement->execute())
+            {
+                $errorMessage = "An error has occured. Please try again."; 
+            }
+            $statement->close();
         } 
         catch (Exception $e)
         {
