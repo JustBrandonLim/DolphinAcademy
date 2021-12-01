@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<html>
     <head>
         <?php
             include_once "./includes.inc.php";

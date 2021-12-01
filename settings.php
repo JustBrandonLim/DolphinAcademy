@@ -105,12 +105,12 @@
                             <p class="card-text">This function allows you to change your password.</p>
                             <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
                                 <div class="form-group">
-                                    <label for="email">New Password:</label>
+                                    <label for="pwd">New Password:</label>
                                     <input class="form-control" type="password" id="pwd" minlength="12" name="pwd" 
                                            placeholder="Enter new password">
                                 </div>
                                 <div class="form-group">
-                                    <label for="pwd">Re-enter New Password: </label>
+                                    <label for="pwd_confirm">Re-enter New Password: </label>
                                     <input class="form-control" type="password" id="pwd_confirm" minlength="12"  
                                            name="pwd_confirm" placeholder="Enter new password again">
                                 </div>
@@ -128,8 +128,8 @@
                             <p class="card-text">This function allows you to delete your account.</p>
                             <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
                                 <div class="form-check">
-                                    <label>
-                                        <input type="checkbox" name="agree" required > 
+                                    <label for="agree">
+                                        <input type="checkbox" required name="agree" id="agree"> 
                                         Are you sure you want to delete your account?
                                     </label> 
                                 </div>
@@ -142,7 +142,7 @@
                 </div>
             </div>
         </main>
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="settingsModalLabel" aria-hidden="true">
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">

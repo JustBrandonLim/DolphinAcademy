@@ -151,7 +151,7 @@
 
                                 <div class="form-check">
                                     <label for="agree">
-                                        <input type="checkbox" required name="agree"> 
+                                        <input type="checkbox" required name="agree" id="agree"> 
                                         Agree to terms and conditions.
                                     </label> 
                                 </div>
@@ -165,7 +165,7 @@
                 </div>
             </div>
         </main> 
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
