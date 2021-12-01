@@ -184,7 +184,7 @@
             </div>
         </div>
         <?php
-            include "./footer.inc.php";
+            include_once "./footer.inc.php";
         ?>
     </body>
 </html>

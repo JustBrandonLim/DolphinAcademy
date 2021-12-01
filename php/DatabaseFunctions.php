@@ -1,5 +1,5 @@
 <?php
-    include "DatabaseConnection.php";
+    include_once "DatabaseConnection.php";
 
     function sanitizeInput($data)
     {
@@ -113,8 +113,6 @@
                     echo "<div class=\"card-body\">";
                     echo "<h5 class=\"card-title\">" . $row["name"] . "</h5>";                    
                     echo "<p class=\"card-text\">" . $row["description"] . "</p>";
-                    
-                    include "includes.inc.php";
                     
                     session_start();
                     if ($_SESSION["loggedin"] === true)

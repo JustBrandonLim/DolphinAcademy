@@ -2,12 +2,12 @@
 <html lang="en">
     <head>
         <?php
-            include "./includes.inc.php";
+            include_once "./includes.inc.php";
         ?>
     </head>
     <body>
         <?php
-            include "./nav.inc.php";
+            include_once "./nav.inc.php";
         ?>
         <header>
             <h1>Courses</h1>
@@ -26,7 +26,7 @@
             </div>
         </main>
         <?php
-            include "./footer.inc.php"; 
+            include_once "./footer.inc.php"; 
         ?>
     </body>
 </html>

@@ -5,7 +5,7 @@
 <html lang="en">
     <head>
         <?php
-            include "./includes.inc.php";
+            include_once "./includes.inc.php";
         ?>
         <script>
             //javascript for toggling the 'click to update' button and the update form
@@ -23,7 +23,7 @@
     </head>
     <body>
         <?php
-            include "./nav.inc.php";
+            include_once "./nav.inc.php";
         ?>
         <header>
             <h1 style="padding-top: 10px;padding-bottom: 10px;">Reviews</h1>
@@ -161,7 +161,7 @@
             </div>
         </div>
         <?php
-            include "./footer.inc.php"; 
+            include_once "./footer.inc.php"; 
         ?>
     </body>
 </html>

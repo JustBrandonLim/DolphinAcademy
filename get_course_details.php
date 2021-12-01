@@ -8,7 +8,7 @@
     
     $courseName = $_GET["courseName"];
     
-    include "./php/DatabaseFunctions.php";
+    include_once "./php/DatabaseFunctions.php";
     
     getCourseDetail($courseName);
 ?>

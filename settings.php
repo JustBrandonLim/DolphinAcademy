@@ -2,12 +2,12 @@
 <html lang="en">
     <head>
         <?php
-            include "./includes.inc.php";
+            include_once "./includes.inc.php";
         ?>
     </head>
     <body>
         <?php
-            include "./nav.inc.php";
+            include_once "./nav.inc.php";
         ?>
         <main class="container-fluid">
             <?php
@@ -160,8 +160,8 @@
                 </div>
             </div>
         </div>
-<?php
-include "./footer.inc.php";
-?>
+        <?php
+            include_once "./footer.inc.php";
+        ?>
     </body>
 </html>
