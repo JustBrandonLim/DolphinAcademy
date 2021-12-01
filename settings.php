@@ -2,98 +2,96 @@
 <html lang="en">
     <head>
         <?php
-        include "./includes.inc.php";
+            include "./includes.inc.php";
         ?>
     </head>
     <body>
         <?php
-        include "./nav.inc.php";
+            include "./nav.inc.php";
         ?>
         <main class="container-fluid">
             <?php
-            include "./php/DatabaseFunctions.php";
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    $errorMessage1 = "";
+                    $errorMessage = "";
+                    if (empty($_POST["pwd"])) {
+                        $errorMessage1 .= "Password is required.";
+                    }
 
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                $errorMessage1 = "";
-                $errorMessage = "";
-                if (empty($_POST["pwd"])) {
-                    $errorMessage1 .= "Password is required.";
-                }
+                    if (empty($_POST["pwd_confirm"])) {
+                        $errorMessage1 .= "Confirm Password is required.";
+                    }
 
-                if (empty($_POST["pwd_confirm"])) {
-                    $errorMessage1 .= "Confirm Password is required.";
-                }
+                    if ($_POST["pwd"] === $_POST["pwd_confirm"]) {
+                        $pwd_hashed = password_hash($_POST["pwd"], PASSWORD_DEFAULT);
+                    } 
+                    else {
+                        $errorMessage1 .= "Password and Confirm Password do not match!";
+                    }
 
-                if ($_POST["pwd"] === $_POST["pwd_confirm"]) {
-                    $pwd_hashed = password_hash($_POST["pwd"], PASSWORD_DEFAULT);
-                } 
-                else {
-                    $errorMessage1 .= "Password and Confirm Password do not match!";
-                }
+                    switch ($_POST["submit"]) {
+                        case "delete_user":
+                            $errorMessage = deleteUser($_SESSION["email"]);
+                            if (empty($errorMessage)) {
 
-                switch ($_POST["submit"]) {
-                    case "delete_user":
-                        $errorMessage = deleteUser($_SESSION["email"]);
-                        if (empty($errorMessage)) {
-
-                            echo "<script type='text/javascript'>
-                                        $(document).ready(function(){
-                                        $(\"#modal-message\").html(\"Your account is deleted\");
-                                    });
-                                    </script>";
-                            echo "<script type='text/javascript'>
-                                        $(document).ready(function(){
-                                        $('#myModal').modal('show');
-                                    });
-                                    </script>";
-                            echo "<script type='text/javascript'>
-                                        $(document).ready(function(){
-                                            $('#close').click(function(){
-                                                window.location.replace('index.php');
-                                            });
+                                echo "<script type='text/javascript'>
+                                            $(document).ready(function(){
+                                            $(\"#modal-message\").html(\"Your account is deleted\");
                                         });
-                                    </script>";
-                            session_start();
-                            session_unset();
-                            session_destroy();
-                        }
+                                        </script>";
+                                echo "<script type='text/javascript'>
+                                            $(document).ready(function(){
+                                            $('#myModal').modal('show');
+                                        });
+                                        </script>";
+                                echo "<script type='text/javascript'>
+                                            $(document).ready(function(){
+                                                $('#close').click(function(){
+                                                    window.location.replace('index.php');
+                                                });
+                                            });
+                                        </script>";
+                                session_start();
+                                session_unset();
+                                session_destroy();
+                            }
+                            break;
+
+                        case "update_password":
+                            $errorMessage = updatePassword($_SESSION["email"], $pwd_hashed);
+                            if (empty($errorMessage1)) {
+                                echo "<script type='text/javascript'>
+                                            $(document).ready(function(){
+                                            $(\"#modal-message\").html(\"Your password has been changed\");
+                                        });
+                                        </script>";
+                                echo "<script type='text/javascript'>
+                                            $(document).ready(function(){
+                                            $('#myModal').modal('show');
+                                        });
+                                        </script>";
+                                echo "<script type='text/javascript'>
+                                            $(document).ready(function(){
+                                                $('#close').click(function(){
+                                                    window.location.replace('index.php');
+                                                });
+                                            });
+                                        </script>";
+                            } else {
+                                echo "<script type='text/javascript'>
+                                            $(document).ready(function(){
+                                            $(\"#modal-message\").html(\"" . $errorMessage1 . "\");
+                                        });
+                                        </script>";
+                                echo "<script type='text/javascript'>
+                                            $(document).ready(function(){
+                                            $('#myModal').modal('show');
+                                        });
+                                        </script>";
+                            }
                         break;
-
-                    case "update_password":
-                        $errorMessage = updatePassword($_SESSION["email"], $pwd_hashed);
-                        if (empty($errorMessage1)) {
-                            echo "<script type='text/javascript'>
-                                        $(document).ready(function(){
-                                        $(\"#modal-message\").html(\"Your password has been changed\");
-                                    });
-                                    </script>";
-                            echo "<script type='text/javascript'>
-                                        $(document).ready(function(){
-                                        $('#myModal').modal('show');
-                                    });
-                                    </script>";
-                            echo "<script type='text/javascript'>
-                                        $(document).ready(function(){
-                                            $('#close').click(function(){
-                                                window.location.replace('index.php');
-                                            });
-                                        });
-                                    </script>";
-                        } else {
-                            echo "<script type='text/javascript'>
-                                        $(document).ready(function(){
-                                        $(\"#modal-message\").html(\"" . $errorMessage1 . "\");
-                                    });
-                                    </script>";
-                            echo "<script type='text/javascript'>
-                                        $(document).ready(function(){
-                                        $('#myModal').modal('show');
-                                    });
-                                    </script>";
-                        }
-                    break;
+                    }
                 }
-            }
             ?>
             <header>
                 <h1>Settings</h1>

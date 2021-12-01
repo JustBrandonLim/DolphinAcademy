@@ -22,8 +22,6 @@
         ?>
         <main class="container-fluid">
             <?php
-                include "./php/DatabaseFunctions.php";
-                
                 if ($_SERVER["REQUEST_METHOD"] == "POST")
                 {
                     $errorMessage = "";

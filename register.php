@@ -11,8 +11,6 @@
         ?>
         <main class="container-fluid">
             <?php
-                include_once "./php/DatabaseFunctions.php";
-               
                 //Check if POST
                 if ($_SERVER["REQUEST_METHOD"] == "POST")
                 {

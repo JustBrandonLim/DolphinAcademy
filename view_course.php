@@ -26,8 +26,6 @@
                     <div class="card large-card">
                         <div class="card-body">
                             <?php
-                                include "./php/DatabaseFunctions.php";
-
                                 if ($_SERVER["REQUEST_METHOD"] == "POST") 
                                 {
                                     $errorMessage = "";

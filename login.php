@@ -10,16 +10,15 @@
 <html lang="en">
     <head>
         <?php
-        include_once "./includes.inc.php";
+            include_once "./includes.inc.php";
         ?>
     </head>
     <body>
         <?php
-        include_once "./nav.inc.php";
+            include_once "./nav.inc.php";
         ?>
         <main class="container-fluid">
             <?php
-            include_once "./php/DatabaseFunctions.php";
 
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $errorMessage = $email = $pwd = "";

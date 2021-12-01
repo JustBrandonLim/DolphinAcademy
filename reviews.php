@@ -31,7 +31,6 @@
         <main class="container"> 
             <div class="row">
                 <?php
-                    include "./php/DatabaseFunctions.php";
                     getReviews(); 
                     
                     //check if method is post

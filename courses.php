@@ -16,8 +16,6 @@
         <main class="container-fluid">
             <div class="row">
                 <?php
-                    include "./php/DatabaseFunctions.php";
-                    
                     $errorMessage = populateCourses();
                     
                     if (!empty($errorMessage))
