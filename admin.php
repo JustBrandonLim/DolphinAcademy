@@ -13,6 +13,8 @@
         <?php
             include "./includes.inc.php";
         ?>
+        <!-- Dropdown JS -->
+        <script defer src="./javascript/admin.js" ></script>
     </head>
     <body>
         <?php
@@ -26,7 +28,7 @@
                 {
                     $errorMessage = "";
                     
-                    $courseName = $courseDescription = "";
+                    $courseName = $courseDescription = $courseURL = "";
                     
                     switch ($_POST["submit"]) {
                         case "add_course":
@@ -79,9 +81,18 @@
                                 $courseDescription = sanitizeInput($_POST["cdesc"]);
                             }
                             
+                            if (empty($_POST["curl"]))
+                            {
+                                $errorMessage .= "Course URL is required.<br>";
+                            }
+                            else
+                            {
+                                $courseURL = sanitizeInput($_POST["curl"]);
+                            }
+                            
                             if (empty($errorMessage))
                             {
-                                $errorMessage = updateCourse($_POST["selectedCourseName"], $courseName, $courseDescription);
+                                $errorMessage = updateCourse($_POST["selectedCourseName"], $courseName, $courseDescription, $courseURL);
                             }
                             break;
                     }
@@ -185,7 +196,8 @@
                             <form name="delete_course_form" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">  
                                 <div class="form-group">
                                     <label for="pname">Course Name:</label>
-                                    <select class="form-select" id="selectedCourseNameUpdate" name="selectedCourseName">
+                                    <select class="form-select" id="selectedCourseNameUpdate" name="selectedCourseName" onchange="getCourseDetails(this)">
+                                        <option>Please select a course</option>
                                         <?php 
                                             $errorMessage = populateCoursesDropDown();
                                             
@@ -207,6 +219,12 @@
                                     <label for="cdesc">Course Description:</label>
                                     <textarea class="form-control" id="cdescUpdate" maxlength="255" name="cdesc" 
                                             placeholder="Enter course description"></textarea>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="curl">Course URL:</label>
+                                    <textarea class="form-control" id="curlUpdate" maxlength="255" name="curl" 
+                                            placeholder="Enter course URL"></textarea>
                                 </div>
                                 
                                 <div class="form-group">

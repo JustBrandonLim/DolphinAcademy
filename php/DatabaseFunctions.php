@@ -326,7 +326,7 @@
     //Admin
     function populateCoursesDropDown()
     {
-        $selected = false;
+        //$selected = false;
         
         $errorMessage = "";
         
@@ -345,15 +345,15 @@
             {
                 while($row = $result->fetch_assoc()) 
                 {
-                    if (!$selected)
-                    {
-                        echo "<option selected value=\"" . $row["name"] . "\">" . $row["name"] . "</option>";
-                        $selected = true;
-                    }
-                    else
-                    {
+                    //if (!$selected)
+                    //{
+                    //    echo "<option selected value=\"" . $row["name"] . "\">" . $row["name"] . "</option>";
+                    //    $selected = true;
+                    //}
+                    //else
+                    //{
                         echo "<option value=\"" . $row["name"] . "\">" . $row["name"] . "</option>";
-                    }
+                    //}
                 }
             }
             else
@@ -454,7 +454,7 @@
         return $errorMessage;
     }
     
-    function updateCourse($selectedCourseName, $courseName, $courseDescription)
+    function updateCourse($selectedCourseName, $courseName, $courseDescription, $courseUrl)
     {
         $errorMessage = "";
         
@@ -463,8 +463,8 @@
 
         try
         {
-            $statement = $connectionGet->prepare("UPDATE dolphin_academy_courses SET name=?, description=? WHERE name=?");
-            $statement->bind_param("sss", $courseName, $courseDescription, $selectedCourseName);
+            $statement = $connectionGet->prepare("UPDATE dolphin_academy_courses SET name=?, description=?, url=? WHERE name=?");
+            $statement->bind_param("ssss", $courseName, $courseDescription, $courseUrl, $selectedCourseName);
             if (!$statement->execute())
             {
                 $errorMessage = "An error has occured. Please try again."; 
@@ -532,4 +532,45 @@
         return $errorMessage;
     }
     
+    function getCourseDetail($name)
+    {
+        $errorMessage = "";
+        
+        $connection = DatabaseConnection::getInstance();
+        $connectionGet = $connection->getConnection();
+
+        try
+        {
+            $statement = $connectionGet->prepare("SELECT * FROM dolphin_academy_courses WHERE name=?");
+            $statement->bind_param("s", $name);
+            if (!$statement->execute())
+            {
+                $errorMessage = "An error has occured. Please try again."; 
+            }
+            $result = $statement->get_result();
+            if ($result->num_rows > 0)
+            {
+                $newArr = array();
+                /* fetch associative array */
+                while($row = $result->fetch_assoc()) 
+                {
+                    $newArr[] = $row;
+                }
+                //print_r($newArr);
+                echo json_encode($newArr);
+            }
+            else
+            {
+                echo "No courses available.";
+            }
+            $statement->close(); 
+        } 
+        catch (Exception $e)
+        {
+            echo "An error has occured. Please try again.";
+            return $errorMessage;
+        }
+        
+        return $errorMessage;
+    }
 ?>
